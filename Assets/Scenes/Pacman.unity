@@ -582,10 +582,11 @@ MonoBehaviour:
   - {fileID: 2107185094}
   pacman: {fileID: 1575749643}
   pellets: {fileID: 1910537628}
-  gameOverText: {fileID: 1133529214}
+  experienceManager: {fileID: 572888031}
   scorePacmanText: {fileID: 1945791160}
   scoreGhostText: {fileID: 1146465693}
   livesText: {fileID: 278868602}
+  gameOverText: {fileID: 1133529214}
 --- !u!4 &469897152
 Transform:
   m_ObjectHideFlags: 0
@@ -843,17 +844,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 20
-      value: 10000
-      inSlope: 2
-      outSlope: 2
+      value: 50000
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -861,6 +862,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  totalExperience: 0
   levelText: {fileID: 1667967946}
   experienceText: {fileID: 913767479}
   experiencefill: {fileID: 216307000}
@@ -7984,7 +7986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -461, y: -710}
+  m_AnchoredPosition: {x: -412.5, y: -710}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1667967946
@@ -8020,7 +8022,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 00
+  m_Text: 1
 --- !u!222 &1667967947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11337,7 +11339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6038318316045854526, guid: b6894cca0173e8041bba0e4a8be5fde1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -6,30 +6,25 @@ public class ExperienceManager : MonoBehaviour
     [Header("Experience Settings")]
     [SerializeField] AnimationCurve experienceCurve;
     
-    int currentLevel, totalExperience;
-    int previousLevelExperience, nextLevelExperience;
+    private int currentLevel;
+    public int totalExperience;
+    private int previousLevelExperience; 
+    private int nextLevelExperience;
 
     [Header("Interface Elements")]  
     [SerializeField] private Text levelText;
     [SerializeField] private Text experienceText;
     [SerializeField] private Image experiencefill;
 
-    void Start()
+    public void SetExperience()
     {
-        currentLevel = 1;
+        currentLevel = 0;
         totalExperience = 0;
         previousLevelExperience = 0;
         nextLevelExperience = (int)experienceCurve.Evaluate(currentLevel + 1);
         UpdateLevel();
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            AddExperience(150);
-        }
-    }
     public void AddExperience(int amount)
     {
         totalExperience += amount;
@@ -59,7 +54,7 @@ public class ExperienceManager : MonoBehaviour
         int end = nextLevelExperience - previousLevelExperience;
 
         levelText.text = currentLevel.ToString();
-        experienceText.text = start + "exp / " + end + "exp";
+        experienceText.text = start + "XP / " + end + "XP";
         experiencefill.fillAmount = (float)start / end;
     }
 }

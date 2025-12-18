@@ -5,14 +5,18 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
+    
+    [Header("Game Elements")]
     [SerializeField] private Ghost[] ghosts;
     [SerializeField] private Pacman pacman;
     [SerializeField] private Transform pellets;
-    [SerializeField] private Text gameOverText;
+    [SerializeField] private ExperienceManager experienceManager;
+
+    [Header("Interface Elements")]
     [SerializeField] private Text scorePacmanText;
     [SerializeField] private Text scoreGhostText;
     [SerializeField] private Text livesText;
+    [SerializeField] private Text gameOverText;
 
     public int scorePacman { get; private set; } = 0;
     public int scoreGhost { get; private set; } = 0;
@@ -52,8 +56,10 @@ public class GameManager : MonoBehaviour
     {
         SetScorePacman(0);
         SetScoreGhost(0);
+        experienceManager.SetExperience();
         SetLives(3);
         NewRound();
+        
     }
 
     private void NewRound()
@@ -130,16 +136,18 @@ public class GameManager : MonoBehaviour
         pellet.gameObject.SetActive(false);
         
         var pacmanCollector = collector.GetComponent<Pacman>();
+        var ghostCollector = collector.GetComponent<Ghost>();
+
         if (pacmanCollector != null)
         {
             SetScorePacman(scorePacman + pellet.points);
         }
         else
         {
-            var ghostCollector = collector.GetComponent<Ghost>();
             if (ghostCollector != null)
             {
                 SetScoreGhost(scoreGhost + pellet.points);
+                experienceManager.AddExperience(pellet.points);
             }
         }
      
@@ -176,6 +184,7 @@ public class GameManager : MonoBehaviour
             if (ghostCollector != null)
             {
                 SetScoreGhost(scoreGhost + pellet.points);
+                experienceManager.AddExperience(pellet.points);
             }
         }
 
