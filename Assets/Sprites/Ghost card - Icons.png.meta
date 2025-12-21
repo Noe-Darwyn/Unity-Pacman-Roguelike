@@ -1,0 +1,347 @@
+fileFormatVersion: 2
+guid: 089d5df9fb3843a489089abcf9c7d492
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2580421205633457494
+    second: Ghost card - Icons_0
+  - first:
+      213: -5721678602969818572
+    second: Ghost card - Icons_1
+  - first:
+      213: 7696846381021445913
+    second: Ghost card - Icons_2
+  - first:
+      213: -5419396993893434131
+    second: Ghost card - Icons_3
+  - first:
+      213: -3947285006911515166
+    second: Ghost card - Icons_4
+  - first:
+      213: -4483375179808240356
+    second: Ghost card - Icons_5
+  - first:
+      213: 2334791116559397908
+    second: Ghost card - Icons_6
+  - first:
+      213: 6212008436452218654
+    second: Ghost card - Icons_7
+  - first:
+      213: 5454975136169815276
+    second: Ghost card - Icons_8
+  - first:
+      213: -8320702388356844635
+    second: Ghost card - Icons_9
+  - first:
+      213: -3499322005484093367
+    second: Ghost card - Icons_10
+  - first:
+      213: 7158430794749126749
+    second: Ghost card - Icons_11
+  - first:
+      213: 5639858420303130587
+    second: Ghost card - Icons_12
+  - first:
+      213: -6672215519191788508
+    second: Ghost card - Icons_13
+  - first:
+      213: 7993737046115213185
+    second: Ghost card - Icons_14
+  - first:
+      213: 6799306601825634042
+    second: Ghost card - Icons_15
+  - first:
+      213: 3367488435480836564
+    second: Ghost card - Icons_16
+  - first:
+      213: -8945937888592655787
+    second: Ghost card - Icons_17
+  - first:
+      213: -7375752080058555122
+    second: Ghost card - Icons_18
+  - first:
+      213: 6772201769936809185
+    second: Ghost card - Icons_19
+  - first:
+      213: 3436347279230414897
+    second: Ghost card - Icons_20
+  - first:
+      213: -7514767123441288183
+    second: Ghost card - Icons_21
+  - first:
+      213: 3101547643462714526
+    second: Ghost card - Icons_22
+  - first:
+      213: -5244940133337156702
+    second: Ghost card - Icons_23
+  - first:
+      213: 6448288108178025810
+    second: Ghost card - Icons_24
+  - first:
+      213: 3609145564236519051
+    second: Ghost card - Icons_25
+  - first:
+      213: 4894933791330975788
+    second: Ghost card - Icons_26
+  - first:
+      213: 3225959338778404129
+    second: Ghost card - Icons_27
+  - first:
+      213: -1005362046817559306
+    second: Ghost card - Icons_28
+  - first:
+      213: 1638425599471946605
+    second: Ghost card - Icons_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ghost card - Icons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ddaa43a6f7fc320800000000000000
+      internalID: 2580421205633457494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost card - Icons_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43ad70710a38890b0800000000000000
+      internalID: -5721678602969818572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost card - Icons_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91fb88ff001b0da60800000000000000
+      internalID: 7696846381021445913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost card - Icons_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dec7922b52f6ac4b0800000000000000
+      internalID: -5419396993893434131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost card - Icons_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e550d7233d6839c0800000000000000
+      internalID: -3947285006911515166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost card - Icons_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d0ab4270ad7c1c0800000000000000
+      internalID: -4483375179808240356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 398e6cb9951272f4d88c866f3f8b6e22
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":2.0},"gridSpriteSize":{"x":96.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Ghost card - Icons_0: 2580421205633457494
+      Ghost card - Icons_1: -5721678602969818572
+      Ghost card - Icons_2: 7696846381021445913
+      Ghost card - Icons_3: -5419396993893434131
+      Ghost card - Icons_4: -3947285006911515166
+      Ghost card - Icons_5: -4483375179808240356
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

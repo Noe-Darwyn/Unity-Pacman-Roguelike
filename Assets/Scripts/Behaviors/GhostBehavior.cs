@@ -5,6 +5,7 @@ public abstract class GhostBehavior : MonoBehaviour
 {
     public Ghost ghost { get; private set; }
     public float duration;
+    public float speedMultiplier = 1f;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public abstract class GhostBehavior : MonoBehaviour
     public virtual void Enable(float duration)
     {
         enabled = true;
-
+        
         CancelInvoke();
         Invoke(nameof(Disable), duration);
     }

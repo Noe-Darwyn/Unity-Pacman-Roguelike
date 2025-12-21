@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e138b7fd480d349871ac6e94826e68, type: 3}
+  m_Name: New Ghost Card
+  m_EditorClassIdentifier: Assembly-CSharp::GhostCardSpace.GhostCard
+  Sprite: {fileID: 0}
+  ghostName: 
+  Health: 0
+  Points: 0
+  trait: 0
+  modifier: 0
+  baseSpeed: 0
+  baseSpeedMultiplier: 0
+  chaseDuration: 0
+  chaseSpeedMutliplier: 0
+  packProximity: 0
+  respawnDuration: 0
+  deploymentCondition: 0
+  scatterDuration: 0
+  scatterSpeedMultiplier: 0
+  scatterProximity: 0
+  scatterCorner: 0
+  frightenedSpeedMultiplier: 0
