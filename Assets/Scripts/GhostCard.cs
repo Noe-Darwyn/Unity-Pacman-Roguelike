@@ -11,9 +11,8 @@ namespace GhostCardSpace
         // Basic Info
         [Header("Basic Info")]
         public Sprite Sprite;
-        public string ghostName;
-        public int Health;
-        public int Points = 0;
+        public int health;
+        public int points = 0;
 
         // Traits and Modifiers
         [Header("Traits and Modifiers")]
@@ -25,16 +24,6 @@ namespace GhostCardSpace
             Agressive,
             Ambusher,
             Duplicitous
-        }
-
-        public GhostModifier modifier;
-        public enum GhostModifier
-        {
-            None,
-            Fast,
-            Slow,
-            Tanky,
-            Fragile
         }
         
         // Movement and Behavior Stats
@@ -48,13 +37,7 @@ namespace GhostCardSpace
         public int packProximity;
         [Header("Spawn Stats")]  
         public int respawnDuration;
-        public DeploymentCondition deploymentCondition;
-        public enum DeploymentCondition
-        {
-            TimeBased,
-            ScoreBased,
-            EventBased
-        }
+        
         [Header("Scatter Stats")]
         public int scatterDuration;
         public int scatterSpeedMultiplier;
@@ -72,18 +55,15 @@ namespace GhostCardSpace
         
         public void DisplayCardInfo()
         {
-            Debug.Log($"Ghost Name: {ghostName}\n" +
-                      $"Health: {Health}\n" +
-                      $"Points: {Points}\n" +
+            Debug.Log($"Health: {health}\n" +
+                      $"Points: {points}\n" +
                       $"Trait: {trait}\n" +
-                      $"Modifier: {modifier}\n" +
                       $"Base Speed: {baseSpeed}\n" +
                       $"Base Speed Multiplier: {baseSpeedMultiplier}\n" +
                       $"Chase Duration: {chaseDuration}\n" +
                       $"Chase Speed Multiplier: {chaseSpeedMutliplier}\n" +
                       $"Pack Proximity: {packProximity}\n" +
                       $"Respawn Duration: {respawnDuration}\n" +
-                      $"Deployment Condition: {deploymentCondition}\n" +
                       $"Scatter Duration: {scatterDuration}\n" +
                       $"Scatter Speed Multiplier: {scatterSpeedMultiplier}\n" +
                       $"Scatter Proximity: {scatterProximity}\n" +

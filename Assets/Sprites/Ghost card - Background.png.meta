@@ -103,13 +103,13 @@ TextureImporter:
       name: Ghost card - Background_0
       rect:
         serializedVersion: 2
-        x: 144
-        y: 192
-        width: 3509
-        height: 4224
+        x: 0
+        y: 0
+        width: 3840
+        height: 4608
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 49, y: 0, z: 5, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2db0395191f3c644ea679a7c3435a90f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
