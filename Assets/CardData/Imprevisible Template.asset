@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e138b7fd480d349871ac6e94826e68, type: 3}
   m_Name: Imprevisible Template
   m_EditorClassIdentifier: Assembly-CSharp::GhostCardSpace.GhostCard
-  Sprite: {fileID: 0}
-  health: 0
-  points: 0
+  Sprite: {fileID: 21300000, guid: afc3b534b8a93544984cf1676ba61ae4, type: 3}
+  health: 4
+  points: 200
   trait: 0
   baseSpeed: 0
   baseSpeedMultiplier: 0
   chaseDuration: 0
   chaseSpeedMutliplier: 0
   packProximity: 0
-  respawnDuration: 0
+  respawnDuration: 10
   scatterDuration: 0
   scatterSpeedMultiplier: 0
   scatterProximity: 0
-  scatterCorner: 0
-  frightenedSpeedMultiplier: 0
+  scatterCorner: 3
+  frightenedSpeedMultiplier: 1
