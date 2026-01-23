@@ -42,7 +42,7 @@ namespace GhostCardSpace
         public int scatterDuration;
         public int scatterSpeedMultiplier;
         public int scatterProximity;
-        
+        // Not displayed, used once the UI setup is done
         public ScatterCorner scatterCorner;
         public enum ScatterCorner
         {

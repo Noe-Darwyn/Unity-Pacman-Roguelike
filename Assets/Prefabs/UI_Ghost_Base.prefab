@@ -1890,8 +1890,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 105588650750300498}
+  - component: {fileID: 3103791619535191165}
   m_Layer: 0
-  m_Name: GhostAnalytics
+  m_Name: UI_Ghost_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1913,6 +1914,31 @@ Transform:
   - {fileID: 8131557444445377889}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3103791619535191165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986231755326378737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acc14c337a9a6f47b377d83354e9220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostCardDisplay
+  cardData: {fileID: 0}
+  ghostImage: {fileID: 532108312021496751}
+  lifeImage: {fileID: 2525068973645483147}
+  traitText: {fileID: 1068282862823074991}
+  baseSpeedText: {fileID: 8934536591905367684}
+  chaseDurationText: {fileID: 8419436835526515088}
+  chaseSpeedText: {fileID: 7703480062737697740}
+  packProximityText: {fileID: 3806521374398995901}
+  respawnDurationText: {fileID: 378647994050674769}
+  scatterDurationText: {fileID: 1216314876263842474}
+  scatterSpeedText: {fileID: 7182603019174801064}
+  scatterProximityText: {fileID: 146793042342601924}
+  frightenedSpeedText: {fileID: 7695304833114147613}
 --- !u!1 &6150106091693387284
 GameObject:
   m_ObjectHideFlags: 0
