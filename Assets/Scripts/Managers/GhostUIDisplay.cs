@@ -6,7 +6,7 @@ using TMPro;
 using GhostCardSpace;
 using UnityEngine.PlayerLoop;
 
-public class GhostCardDisplay : MonoBehaviour
+public class GhostUIDisplay : MonoBehaviour
 {
 
     [Header("Basic Info")]
@@ -54,7 +54,7 @@ public class GhostCardDisplay : MonoBehaviour
         baseSpeedText.text = cardData.baseSpeed.ToString();
 
         chaseDurationText.text = cardData.chaseDuration.ToString();
-        chaseSpeedText.text = cardData.chaseSpeedMutliplier.ToString();
+        chaseSpeedText.text = cardData.chaseSpeedMultiplier.ToString();
         packProximityText.text = cardData.packProximity.ToString();
 
         respawnDurationText.text = cardData.respawnDuration.ToString();

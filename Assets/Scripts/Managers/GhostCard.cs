@@ -32,7 +32,7 @@ namespace GhostCardSpace
 
         [Header("Chase Stats")]
         public int chaseDuration;
-        public int chaseSpeedMutliplier;
+        public int chaseSpeedMultiplier;
         public int packProximity;
 
         [Header("Spawn Stats")]  
@@ -62,7 +62,7 @@ namespace GhostCardSpace
                       $"Base Speed: {baseSpeed}\n" +
                       $"Base Speed Multiplier: {baseSpeedMultiplier}\n" +
                       $"Chase Duration: {chaseDuration}\n" +
-                      $"Chase Speed Multiplier: {chaseSpeedMutliplier}\n" +
+                      $"Chase Speed Multiplier: {chaseSpeedMultiplier}\n" +
                       $"Pack Proximity: {packProximity}\n" +
                       $"Respawn Duration: {respawnDuration}\n" +
                       $"Scatter Duration: {scatterDuration}\n" +

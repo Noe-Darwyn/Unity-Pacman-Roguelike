@@ -6,6 +6,7 @@ public class GhostFrightened : GhostBehavior
     public SpriteRenderer eyes;
     public SpriteRenderer blue;
     public SpriteRenderer white;
+    public float frightenedSpeedMultiplier = 1f;
 
     private bool eaten;
 
@@ -56,7 +57,7 @@ public class GhostFrightened : GhostBehavior
     private void OnEnable()
     {
         blue.GetComponent<AnimatedSprite>().Restart();
-        ghost.movement.speedMultiplier = 0.5f;
+        ghost.movement.speedMultiplier = frightenedSpeedMultiplier;
         eaten = false;
     }
 

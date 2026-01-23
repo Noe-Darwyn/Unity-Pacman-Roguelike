@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class GhostScatter : GhostBehavior
 {
+    public float scatterSpeedMultiplier = 1f;
+
+    private void OnEnable()
+    {
+        ghost.movement.speedMultiplier = scatterSpeedMultiplier;
+    }
+
     private void OnDisable()
     {
         ghost.chase.Enable();
