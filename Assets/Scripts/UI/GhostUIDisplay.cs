@@ -60,7 +60,7 @@ public class GhostUIDisplay : MonoBehaviour
 
         scatterDurationText.text = cardData.scatterDuration.ToString();
         scatterSpeedText.text = cardData.scatterSpeedMultiplier.ToString();
-        scatterProximityText.text = cardData.scatterProximity.ToString();
+        scatterProximityText.text = cardData.cornerProximity.ToString();
 
         frightenedSpeedText.text = cardData.frightenedSpeedMultiplier.ToString();
     }

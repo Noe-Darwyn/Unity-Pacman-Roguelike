@@ -62,8 +62,7 @@ public class GhostFrightened : GhostBehavior
     }
 
     private void OnDisable()
-    {
-        ghost.movement.speedMultiplier = 1f;
+    {;
         eaten = false;
     }
 

@@ -13,9 +13,12 @@ namespace PermanentUpgradeCardSpace
         public string upgradeName;
         public string upgradeDescription;
 
-        [Header("Upgrade Effects")]
-        [Header("- Basic Stats")]
+        [Header("Health and Points Upgrades")]
         public int healthIncrease;
+        public int pointsDecrease;
+        
+        [Header("Movement and Behavior Upgrades")]
+        [Header("- Basic Stats")]
         public int baseSpeedIncrease;
         public int baseSpeedMultiplierIncrease;
 
@@ -30,7 +33,7 @@ namespace PermanentUpgradeCardSpace
         [Header("- Scatter Stats")]
         public int scatterDurationIncrease;
         public int scatterSpeedMultiplierIncrease;
-        public int scatterProximityIncrease;
+        public int cornerProximityIncrease;
 
         [Header("- Frightened Stats")]
         public int frightenedDurationDecrease;
@@ -38,9 +41,8 @@ namespace PermanentUpgradeCardSpace
 
         public void DisplayCardInfo()
         {
-            Debug.Log($"Upgrade Name: {upgradeName}\n" +
-                      $"Description: {upgradeDescription}\n" +
-                      $"Health Increase: {healthIncrease}\n" +
+            Debug.Log($"Health Increase: {healthIncrease}\n" +
+                      $"Points Decrease: {pointsDecrease}\n" +
                       $"Base Speed Increase: {baseSpeedIncrease}\n" +
                       $"Base Speed Multiplier Increase: {baseSpeedMultiplierIncrease}\n" +
                       $"Chase Duration Increase: {chaseDurationIncrease}\n" +
@@ -49,7 +51,7 @@ namespace PermanentUpgradeCardSpace
                       $"Respawn Duration Decrease: {respawnDurationDecrease}\n" +
                       $"Scatter Duration Increase: {scatterDurationIncrease}\n" +
                       $"Scatter Speed Multiplier Increase: {scatterSpeedMultiplierIncrease}\n" +
-                      $"Scatter Proximity Increase: {scatterProximityIncrease}\n" +
+                      $"Corner Proximity Increase: {cornerProximityIncrease}\n" +
                       $"Frightened Duration Decrease: {frightenedDurationDecrease}\n" +
                       $"Frightened Speed Multiplier Increase: {frightenedSpeedMultiplierIncrease}");
         }

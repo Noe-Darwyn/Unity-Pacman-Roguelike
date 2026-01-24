@@ -24,5 +24,6 @@ MonoBehaviour:
   respawnDurationDecrease: 0
   scatterDurationIncrease: 0
   scatterSpeedMultiplierIncrease: 0
-  scatterProximityIncrease: 0
+  scatterProximityIncrease: 1
+  frightenedDurationDecrease: 0
   frightenedSpeedMultiplierIncrease: 0

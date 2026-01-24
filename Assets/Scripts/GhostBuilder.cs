@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GhostCardSpace;
 
 public class GhostBuilder : MonoBehaviour
 {
@@ -32,8 +33,14 @@ public class GhostBuilder : MonoBehaviour
 
     void SetGhostStats()
     {
+        GhostCard[] ghostCardData = upgradedGhostData.GetGhostCardData();
+        
         for (int i = 0; i < ghosts.Length; i++)
         {
+            ghosts[i].initialBehaviorType = ghostCardData[i].initialBehaviorType;
+
+            ghosts[i].points = upgradedGhostData.upgradedPoints[i];
+            
             ghosts[i].movement.speed = upgradedGhostData.upgradedBaseSpeed[i];
             ghosts[i].movement.speedMultiplier = upgradedGhostData.upgradedBaseSpeedMultiplier[i];
 

@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: GhostCard_Base01
   m_EditorClassIdentifier: Assembly-CSharp::GhostCardSpace.GhostCard
   Sprite: {fileID: 0}
+  ghostName: 
+  description: 
   health: 0
   points: 0
-  baseSpeed: 1
+  initialBehaviorType: 3
+  baseSpeed: 5
   baseSpeedMultiplier: 1
   chaseDuration: 1
   chaseSpeedMultiplier: 1
@@ -23,6 +26,6 @@ MonoBehaviour:
   respawnDuration: 1
   scatterDuration: 1
   scatterSpeedMultiplier: 1
-  scatterProximity: 0
+  cornerProximity: 0
   frightenedDuration: 1
   frightenedSpeedMultiplier: 1

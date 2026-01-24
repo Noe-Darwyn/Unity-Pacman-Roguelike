@@ -10,6 +10,9 @@ public class PermanentUpgradeManager : MonoBehaviour
     [SerializeField] private List<PermanentUpgradeCard> availableUpgrades;
 
     // Upgraded stats arrays
+    
+    public int[] upgradedPoints { get; private set; }
+
     public int[] upgradedBaseSpeed { get; private set; }
     public int[] upgradedBaseSpeedMultiplier { get; private set; }  
     public int[] upgradedChaseDuration { get; private set; }
@@ -52,6 +55,8 @@ public class PermanentUpgradeManager : MonoBehaviour
     public void InitializePermanentUpgradeManager()
     {
         // Initialize arrays based on ghost count
+        upgradedPoints = new int[ghostCardData.Length];
+
         upgradedBaseSpeed = new int[ghostCardData.Length];
         upgradedBaseSpeedMultiplier = new int[ghostCardData.Length];
 
@@ -69,6 +74,8 @@ public class PermanentUpgradeManager : MonoBehaviour
         // Initialize upgraded stats with base ghost stats
         for (int i = 0; i < ghostCardData.Length; i++)
         {
+            upgradedPoints[i] = ghostCardData[i].points;
+
             upgradedBaseSpeed[i] = ghostCardData[i].baseSpeed;
             upgradedBaseSpeedMultiplier[i] = ghostCardData[i].baseSpeedMultiplier;
 
@@ -92,6 +99,8 @@ public class PermanentUpgradeManager : MonoBehaviour
 
         for (int i = 0; i < ghostCardData.Length; i++)
         {
+            upgradedPoints[i] = ghostCardData[i].points - upgrade.pointsDecrease;
+            
             upgradedBaseSpeed[i] = ghostCardData[i].baseSpeed + upgrade.baseSpeedIncrease;
             upgradedBaseSpeedMultiplier[i] = ghostCardData[i].baseSpeedMultiplier + upgrade.baseSpeedMultiplierIncrease;
 
@@ -106,5 +115,10 @@ public class PermanentUpgradeManager : MonoBehaviour
             upgradedFrightenedDuration[i] = ghostCardData[i].frightenedDuration - upgrade.frightenedDurationDecrease;
             upgradedFrightenedSpeedMultiplier[i] = ghostCardData[i].frightenedSpeedMultiplier + upgrade.frightenedSpeedMultiplierIncrease;
         }
+    }
+
+    public GhostCard[] GetGhostCardData()
+    {
+        return ghostCardData;
     }
 }

@@ -10,10 +10,16 @@ namespace GhostCardSpace
     {
         [Header("Basic Info")]
         public Sprite Sprite;
+        public string ghostName;
+        public string description;
+
+        [Header("Health and Points")]
         public int health;
         public int points = 0;
 
         [Header("Movement and Behavior Stats")]
+        public GhostBehaviorType initialBehaviorType;
+        
         [Header("- Base Stats")]
         public int baseSpeed;
         public int baseSpeedMultiplier;
@@ -29,7 +35,7 @@ namespace GhostCardSpace
         [Header("- Scatter Stats")]
         public int scatterDuration;
         public int scatterSpeedMultiplier;
-        public int scatterProximity;
+        public int cornerProximity;
 
         [Header("- Frightened Stats")]
         public int frightenedDuration;
@@ -47,9 +53,14 @@ namespace GhostCardSpace
                       $"Respawn Duration: {respawnDuration}\n" +
                       $"Scatter Duration: {scatterDuration}\n" +
                       $"Scatter Speed Multiplier: {scatterSpeedMultiplier}\n" +
-                      $"Scatter Proximity: {scatterProximity}\n" +
+                      $"Corner Proximity: {cornerProximity}\n" +
                       $"Frightened Duration: {frightenedDuration}\n" +
                       $"Frightened Speed Multiplier: {frightenedSpeedMultiplier}");
+        }
+
+        public GhostBehaviorType GetInitialBehaviorType()
+        {
+            return initialBehaviorType;
         }
     }
 }
