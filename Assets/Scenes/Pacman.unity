@@ -804,6 +804,7 @@ GameObject:
   - component: {fileID: 469897152}
   - component: {fileID: 469897151}
   - component: {fileID: 469897153}
+  - component: {fileID: 469897154}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -862,8 +863,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68677396877a8549a1b3fe0de2972f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostBuilder
-  ghosts: []
-  cardData: []
+  upgradedGhostData: {fileID: 469897154}
+  ghosts:
+  - {fileID: 467728135}
+  - {fileID: 2107185094}
+  - {fileID: 1566492903}
+  - {fileID: 2109977863}
+--- !u!114 &469897154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469897150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6582c9a390d6a4eb088600abd1184e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PermanentUpgradeManager
+  ghostCardData:
+  - {fileID: 11400000, guid: f92b24ae551ab474c8f7232594e28727, type: 2}
+  - {fileID: 11400000, guid: f92b24ae551ab474c8f7232594e28727, type: 2}
+  - {fileID: 11400000, guid: f92b24ae551ab474c8f7232594e28727, type: 2}
+  - {fileID: 11400000, guid: f92b24ae551ab474c8f7232594e28727, type: 2}
+  availableUpgrades:
+  - {fileID: 11400000, guid: f5faf5524dc610d44bd87fbb7e8339c6, type: 2}
+  - {fileID: 11400000, guid: f5faf5524dc610d44bd87fbb7e8339c6, type: 2}
+  - {fileID: 11400000, guid: f5faf5524dc610d44bd87fbb7e8339c6, type: 2}
+  - {fileID: 11400000, guid: f5faf5524dc610d44bd87fbb7e8339c6, type: 2}
 --- !u!1 &473470816
 GameObject:
   m_ObjectHideFlags: 0

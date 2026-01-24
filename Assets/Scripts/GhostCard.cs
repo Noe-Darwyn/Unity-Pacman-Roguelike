@@ -13,52 +13,32 @@ namespace GhostCardSpace
         public int health;
         public int points = 0;
 
-        [Header("Traits and Modifiers")]
-        public GhostTrait trait;
-
-        public enum GhostTrait
-        {
-            Imp,
-            Agr,
-            Amb,
-            Dup
-        }
-        
         [Header("Movement and Behavior Stats")]
-        [Header("Base Stats")]
+        [Header("- Base Stats")]
         public int baseSpeed;
-        // Not displayed, might be used for calculations
         public int baseSpeedMultiplier;
 
-        [Header("Chase Stats")]
+        [Header("- Chase Stats")]
         public int chaseDuration;
         public int chaseSpeedMultiplier;
         public int packProximity;
 
-        [Header("Spawn Stats")]  
+        [Header("- Spawn Stats")]  
         public int respawnDuration;
 
-        [Header("Scatter Stats")]
+        [Header("- Scatter Stats")]
         public int scatterDuration;
         public int scatterSpeedMultiplier;
         public int scatterProximity;
-        // Not displayed, used once the UI setup is done
-        public ScatterCorner scatterCorner;
-        public enum ScatterCorner
-        {
-            TopLeft,
-            TopRight,
-            BottomLeft,
-            BottomRight
-        }
-        [Header("Frightened Stats")]
+
+        [Header("- Frightened Stats")]
+        public int frightenedDuration;
         public int frightenedSpeedMultiplier;
         
         public void DisplayCardInfo()
         {
             Debug.Log($"Health: {health}\n" +
                       $"Points: {points}\n" +
-                      $"Trait: {trait}\n" +
                       $"Base Speed: {baseSpeed}\n" +
                       $"Base Speed Multiplier: {baseSpeedMultiplier}\n" +
                       $"Chase Duration: {chaseDuration}\n" +
@@ -68,7 +48,7 @@ namespace GhostCardSpace
                       $"Scatter Duration: {scatterDuration}\n" +
                       $"Scatter Speed Multiplier: {scatterSpeedMultiplier}\n" +
                       $"Scatter Proximity: {scatterProximity}\n" +
-                      $"Scatter Corner: {scatterCorner}\n" +
+                      $"Frightened Duration: {frightenedDuration}\n" +
                       $"Frightened Speed Multiplier: {frightenedSpeedMultiplier}");
         }
     }

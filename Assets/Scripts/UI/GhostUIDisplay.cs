@@ -49,7 +49,6 @@ public class GhostUIDisplay : MonoBehaviour
         lifeImage.sprite = cardData.Sprite;
 
         // Update Texts
-        traitText.text = cardData.trait.ToString();
 
         baseSpeedText.text = cardData.baseSpeed.ToString();
 

@@ -42,6 +42,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        GhostBuilder ghostBuilder = FindObjectOfType<GhostBuilder>();
+        if (ghostBuilder != null)
+        {
+            ghosts = ghostBuilder.ghosts;
+
+        }
+        else
+        {
+            Debug.LogError("GameManager: GhostBuilder not found in the scene!");
+        }
+
         NewGame();
     }
 
@@ -171,12 +182,12 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < ghosts.Length; i++) 
             {
-                ghosts[i].frightened.Enable(pellet.duration);
+                ghosts[i].frightened.Enable(ghosts[i].frightened.duration);
             }
 
             SetScorePacman(scorePacman + pellet.points);
             CancelInvoke(nameof(ResetGhostMultiplier));
-            Invoke(nameof(ResetGhostMultiplier), pellet.duration);
+            Invoke(nameof(ResetGhostMultiplier), ghosts[0].frightened.duration);
         }
         else
         {

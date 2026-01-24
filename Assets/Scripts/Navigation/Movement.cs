@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Vector2 direction { get; private set; }
     public Vector2 nextDirection { get; private set; }
-    public Vector3 startingPosition { get; private set; }
+    public Vector3 startingPosition;
 
     private void Awake()
     {
