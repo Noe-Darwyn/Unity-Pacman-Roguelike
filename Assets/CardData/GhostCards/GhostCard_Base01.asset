@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   health: 0
   points: 0
-  initialBehaviorType: 3
+  initialBehaviorType: 1
   baseSpeed: 5
   baseSpeedMultiplier: 1
   chaseDuration: 1

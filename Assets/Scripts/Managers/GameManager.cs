@@ -7,10 +7,16 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     [Header("Game Elements")]
-    [SerializeField] private Ghost[] ghosts;
+    private Ghost[] ghosts;
     [SerializeField] private Pacman pacman;
     [SerializeField] private Transform pellets;
     [SerializeField] private ExperienceManager experienceManager;
+
+    [Header("Ghost Spawning")]
+    [SerializeField] private Ghost ghostPrefab;
+    [SerializeField] private Transform ghostParent;
+    [SerializeField] private Transform ghostHomeInside;
+    [SerializeField] private Transform ghostHomeOutside;
 
     [Header("Interface Elements")]
     [SerializeField] private Text scorePacmanText;
@@ -45,8 +51,8 @@ public class GameManager : MonoBehaviour
         GhostBuilder ghostBuilder = FindObjectOfType<GhostBuilder>();
         if (ghostBuilder != null)
         {
+            ghostBuilder.BuildGhosts(ghostPrefab, ghostParent, pacman, ghostHomeInside, ghostHomeOutside);
             ghosts = ghostBuilder.ghosts;
-
         }
         else
         {

@@ -11,24 +11,47 @@ public class GhostBuilder : MonoBehaviour
 
     void Awake()
     {
-
         if (upgradedGhostData == null)
         {
             Debug.LogError("GhostBuilder: PermanentUpgradeManager instance is not found! Ensure that a PermanentUpgradeManager exists in the scene.");
             return;
         }
-
     } 
-    
-    void Start()
+
+    public void BuildGhosts(Ghost ghostPrefab, Transform ghostParent, Pacman pacman, Transform ghostHomeInside, Transform ghostHomeOutside)
     {
-        CreateGhosts();
+        CreateGhosts(ghostPrefab, ghostParent, pacman, ghostHomeInside, ghostHomeOutside);
         SetGhostStats();
     }
 
-    void CreateGhosts()
+    void CreateGhosts(Ghost ghostPrefab, Transform ghostParent, Pacman pacman, Transform ghostHomeInside, Transform ghostHomeOutside)
     {
-        
+        if (ghostPrefab == null)
+        {
+            Debug.LogError("GhostBuilder: Ghost prefab is not assigned!");
+            return;
+        }
+
+        GhostCard[] ghostCardData = upgradedGhostData.GetGhostCardData();
+        ghosts = new Ghost[ghostCardData.Length];
+
+        for (int i = 0; i < ghostCardData.Length; i++)
+        {
+            // Instancier le fantôme
+            Ghost ghostInstance = Instantiate(ghostPrefab, ghostParent);
+            ghosts[i] = ghostInstance;
+
+            // Assigner Pacman comme target
+            ghostInstance.target = pacman.transform;
+
+            // Assigner les positions inside/outside pour GhostHome
+            GhostHome ghostHome = ghostInstance.GetComponent<GhostHome>();
+            if (ghostHome != null)
+            {
+                ghostHome.inside = ghostHomeInside;
+                ghostHome.outside = ghostHomeOutside;
+            }
+        }
     }
 
     void SetGhostStats()

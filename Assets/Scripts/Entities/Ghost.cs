@@ -10,7 +10,7 @@ public class Ghost : MonoBehaviour
     public GhostChase chase { get; private set; }
     public GhostFrightened frightened { get; private set; }
     public GhostBehavior initialBehavior;
-    public GhostBehaviorType initialBehaviorType = GhostBehaviorType.Home;
+    public GhostBehaviorType initialBehaviorType;
     public Transform target;
     public int points = 200;
 
@@ -75,7 +75,7 @@ public class Ghost : MonoBehaviour
             GhostBehaviorType.Scatter => scatter,
             GhostBehaviorType.Chase => chase,
             GhostBehaviorType.Frightened => frightened,
-            _ => home
+            _ => chase
         };
     }
 
