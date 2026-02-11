@@ -21,12 +21,12 @@ namespace GhostCardSpace
         public GhostBehaviorType initialBehaviorType;
         
         [Header("- Base Stats")]
-        public int baseSpeed;
-        public int baseSpeedMultiplier;
+        public float baseSpeed;
+        public float baseSpeedMultiplier;
 
         [Header("- Chase Stats")]
         public int chaseDuration;
-        public int chaseSpeedMultiplier;
+        public float chaseSpeedMultiplier;
         public int packProximity;
 
         [Header("- Spawn Stats")]  
@@ -34,12 +34,12 @@ namespace GhostCardSpace
 
         [Header("- Scatter Stats")]
         public int scatterDuration;
-        public int scatterSpeedMultiplier;
+        public float scatterSpeedMultiplier;
         public int cornerProximity;
 
         [Header("- Frightened Stats")]
         public int frightenedDuration;
-        public int frightenedSpeedMultiplier;
+        public float frightenedSpeedMultiplier;
         
         public void DisplayCardInfo()
         {

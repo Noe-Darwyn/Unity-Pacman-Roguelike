@@ -19,12 +19,12 @@ namespace PermanentUpgradeCardSpace
         
         [Header("Movement and Behavior Upgrades")]
         [Header("- Basic Stats")]
-        public int baseSpeedIncrease;
-        public int baseSpeedMultiplierIncrease;
+        public float baseSpeedIncrease;
+        public float baseSpeedMultiplierIncrease;
 
         [Header("- Chase Stats")]
         public int chaseDurationIncrease;
-        public int chaseSpeedMultiplierIncrease;
+        public float chaseSpeedMultiplierIncrease;
         public int packProximityIncrease;
 
         [Header("- Spawn Stats")]  
@@ -32,12 +32,12 @@ namespace PermanentUpgradeCardSpace
 
         [Header("- Scatter Stats")]
         public int scatterDurationIncrease;
-        public int scatterSpeedMultiplierIncrease;
+        public float scatterSpeedMultiplierIncrease;
         public int cornerProximityIncrease;
 
         [Header("- Frightened Stats")]
         public int frightenedDurationDecrease;
-        public int frightenedSpeedMultiplierIncrease;
+        public float frightenedSpeedMultiplierIncrease;
 
         public void DisplayCardInfo()
         {

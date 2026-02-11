@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GhostFrightened : GhostBehavior
 {
+
     public SpriteRenderer body;
     public SpriteRenderer eyes;
     public SpriteRenderer blue;
@@ -30,6 +31,9 @@ public class GhostFrightened : GhostBehavior
         eyes.enabled = true;
         blue.enabled = false;
         white.enabled = false;
+        
+        // Retour au behavior scatter après frightened
+        ghost.scatter.Enable();
     }
 
     private void Eaten()

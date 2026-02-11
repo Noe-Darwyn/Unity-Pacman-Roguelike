@@ -13,17 +13,17 @@ public class PermanentUpgradeManager : MonoBehaviour
     
     public int[] upgradedPoints { get; private set; }
 
-    public int[] upgradedBaseSpeed { get; private set; }
-    public int[] upgradedBaseSpeedMultiplier { get; private set; }  
+    public float[] upgradedBaseSpeed { get; private set; }
+    public float[] upgradedBaseSpeedMultiplier { get; private set; }  
     public int[] upgradedChaseDuration { get; private set; }
-    public int[] upgradedChaseSpeedMultiplier { get; private set; }
+    public float[] upgradedChaseSpeedMultiplier { get; private set; }
 
     public int[] upgradedRespawnDuration { get; private set; }
     
-    public int[] upgradedScatterSpeedMultiplier { get; private set; }
+    public float[] upgradedScatterSpeedMultiplier { get; private set; }
     public int[] upgradedScatterDuration { get; private set; }
 
-    public int[] upgradedFrightenedSpeedMultiplier { get; private set; }
+    public float[] upgradedFrightenedSpeedMultiplier { get; private set; }
     public int[] upgradedFrightenedDuration { get; private set; }
     
 
@@ -57,18 +57,18 @@ public class PermanentUpgradeManager : MonoBehaviour
         // Initialize arrays based on ghost count
         upgradedPoints = new int[ghostCardData.Length];
 
-        upgradedBaseSpeed = new int[ghostCardData.Length];
-        upgradedBaseSpeedMultiplier = new int[ghostCardData.Length];
+        upgradedBaseSpeed = new float[ghostCardData.Length];
+        upgradedBaseSpeedMultiplier = new float[ghostCardData.Length];
 
         upgradedChaseDuration = new int[ghostCardData.Length];
-        upgradedChaseSpeedMultiplier = new int[ghostCardData.Length];
+        upgradedChaseSpeedMultiplier = new float[ghostCardData.Length];
 
         upgradedRespawnDuration = new int[ghostCardData.Length];
         
-        upgradedScatterSpeedMultiplier = new int[ghostCardData.Length];
+        upgradedScatterSpeedMultiplier = new float[ghostCardData.Length];
         upgradedScatterDuration = new int[ghostCardData.Length];
 
-        upgradedFrightenedSpeedMultiplier = new int[ghostCardData.Length];
+        upgradedFrightenedSpeedMultiplier = new float[ghostCardData.Length];
         upgradedFrightenedDuration = new int[ghostCardData.Length];
 
         // Initialize upgraded stats with base ghost stats

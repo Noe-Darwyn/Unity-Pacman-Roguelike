@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee95fadd460bf0944bc280ba491e8c20, type: 3}
-  m_Name: PermaUp_ChaseStats01
+  m_Name: PeUp_Scatter_1
   m_EditorClassIdentifier: Assembly-CSharp::PermanentUpgradeCardSpace.PermanentUpgradeCard
   upgradeSprite: {fileID: 0}
   upgradeName: 
   upgradeDescription: 
   healthIncrease: 0
+  pointsDecrease: 0
   baseSpeedIncrease: 0
   baseSpeedMultiplierIncrease: 0
-  chaseDurationIncrease: 1
-  chaseSpeedMultiplierIncrease: 1
+  chaseDurationIncrease: 0
+  chaseSpeedMultiplierIncrease: 0
   packProximityIncrease: 0
   respawnDurationDecrease: 0
-  scatterDurationIncrease: 0
-  scatterSpeedMultiplierIncrease: 0
-  scatterProximityIncrease: 1
+  scatterDurationIncrease: 1
+  scatterSpeedMultiplierIncrease: 1
+  cornerProximityIncrease: 0
   frightenedDurationDecrease: 0
   frightenedSpeedMultiplierIncrease: 0

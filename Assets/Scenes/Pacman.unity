@@ -670,8 +670,6 @@ MonoBehaviour:
   ghosts:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &469897154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,11 +685,7 @@ MonoBehaviour:
   ghostCardData:
   - {fileID: 11400000, guid: f92b24ae551ab474c8f7232594e28727, type: 2}
   - {fileID: 11400000, guid: f92b24ae551ab474c8f7232594e28727, type: 2}
-  - {fileID: 11400000, guid: f92b24ae551ab474c8f7232594e28727, type: 2}
-  - {fileID: 11400000, guid: f92b24ae551ab474c8f7232594e28727, type: 2}
   availableUpgrades:
-  - {fileID: 11400000, guid: f5faf5524dc610d44bd87fbb7e8339c6, type: 2}
-  - {fileID: 11400000, guid: f5faf5524dc610d44bd87fbb7e8339c6, type: 2}
   - {fileID: 11400000, guid: f5faf5524dc610d44bd87fbb7e8339c6, type: 2}
   - {fileID: 11400000, guid: f5faf5524dc610d44bd87fbb7e8339c6, type: 2}
 --- !u!1 &473470816

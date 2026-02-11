@@ -18,14 +18,14 @@ MonoBehaviour:
   health: 0
   points: 0
   initialBehaviorType: 1
-  baseSpeed: 5
+  baseSpeed: 4
   baseSpeedMultiplier: 1
-  chaseDuration: 1
+  chaseDuration: 5
   chaseSpeedMultiplier: 1
   packProximity: 0
   respawnDuration: 1
-  scatterDuration: 1
+  scatterDuration: 10
   scatterSpeedMultiplier: 1
   cornerProximity: 0
-  frightenedDuration: 1
-  frightenedSpeedMultiplier: 1
+  frightenedDuration: 5
+  frightenedSpeedMultiplier: 0.5
