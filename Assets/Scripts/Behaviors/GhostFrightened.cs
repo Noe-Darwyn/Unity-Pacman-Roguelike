@@ -10,6 +10,9 @@ public class GhostFrightened : GhostBehavior
     public float frightenedSpeedMultiplier = 1f;
 
     private bool eaten;
+    private GhostBehavior previousBehavior;
+    private float previousDuration;
+    private float previousSpeedMultiplier;
 
     public override void Enable(float duration)
     {
@@ -32,8 +35,12 @@ public class GhostFrightened : GhostBehavior
         blue.enabled = false;
         white.enabled = false;
         
-        // Retour au behavior scatter après frightened
-        ghost.scatter.Enable();
+        // Rétablir le comportement précédent avec ses propriétés originales
+        if (previousBehavior != null)
+        {
+            ghost.movement.speedMultiplier = previousSpeedMultiplier;
+            previousBehavior.Enable(previousDuration);
+        }
     }
 
     private void Eaten()
@@ -63,6 +70,32 @@ public class GhostFrightened : GhostBehavior
         blue.GetComponent<AnimatedSprite>().Restart();
         ghost.movement.speedMultiplier = frightenedSpeedMultiplier;
         eaten = false;
+
+        // Sauvegarder et désactiver le comportement actuellement actif
+        if (ghost.chase.enabled)
+        {
+            previousBehavior = ghost.chase;
+            previousDuration = ghost.chase.duration;
+            previousSpeedMultiplier = ghost.chase.GetComponent<GhostChase>().chaseSpeedMultiplier;
+            ghost.chase.enabled = false;
+            ghost.chase.CancelInvoke();
+        }
+        else if (ghost.scatter.enabled)
+        {
+            previousBehavior = ghost.scatter;
+            previousDuration = ghost.scatter.duration;
+            previousSpeedMultiplier = ghost.scatter.GetComponent<GhostScatter>().scatterSpeedMultiplier;
+            ghost.scatter.enabled = false;
+            ghost.scatter.CancelInvoke();
+        }
+        else if (ghost.home.enabled)
+        {
+            previousBehavior = ghost.home;
+            previousDuration = ghost.home.duration;
+            previousSpeedMultiplier = 1f; // Home n'a pas de speedMultiplier spécifique
+            ghost.home.enabled = false;
+            ghost.home.CancelInvoke();
+        }
     }
 
     private void OnDisable()

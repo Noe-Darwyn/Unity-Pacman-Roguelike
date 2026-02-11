@@ -11,7 +11,11 @@ public class GhostScatter : GhostBehavior
 
     private void OnDisable()
     {
-        ghost.chase.Enable();
+        // Ne passer à chase que si frightened n'est pas en train de prendre le contrôle
+        if (!ghost.frightened.enabled)
+        {
+            ghost.chase.Enable();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
