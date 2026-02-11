@@ -21,6 +21,7 @@ public class GhostBuilder : MonoBehaviour
     public void BuildGhosts(Ghost ghostPrefab, Transform ghostParent, Pacman pacman, Transform ghostHomeInside, Transform ghostHomeOutside)
     {
         CreateGhosts(ghostPrefab, ghostParent, pacman, ghostHomeInside, ghostHomeOutside);
+        
         SetGhostStats();
     }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using Unity.Collections;
 
 [RequireComponent(typeof(Movement))]
 public class Pacman : MonoBehaviour
@@ -11,7 +12,6 @@ public class Pacman : MonoBehaviour
     private CircleCollider2D circleCollider;
     private Movement movement;
 
-    [SerializeField] private Transform[] ghosts;
     private List<Transform> pellets;
     private int pelletLayer;
 
@@ -41,6 +41,7 @@ public class Pacman : MonoBehaviour
         float angle = Mathf.Atan2(movement.direction.y, movement.direction.x);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
     }
+    
     private Vector2 ChooseDirection()
     {
         // MODE FUITE 
@@ -88,11 +89,8 @@ public class Pacman : MonoBehaviour
         Transform closest = null;
         float minDistance = float.MaxValue;
         
-        foreach (Transform ghostT in ghosts)
+        foreach (Ghost ghost in GameManager.Instance.Ghosts)
         {
-            if (ghostT == null) continue;
-            
-            Ghost ghost = ghostT.GetComponent<Ghost>();
             if (ghost == null) continue;
             
             // Ignorer si frightened ou dans la maison
@@ -100,12 +98,12 @@ public class Pacman : MonoBehaviour
             if (ghost.home != null && ghost.home.enabled) continue;
             
             // Calculer distance
-            float distance = Vector2.Distance(transform.position, ghostT.position);
+            float distance = Vector2.Distance(transform.position, ghost.transform.position);
             
             if (distance < minDistance)
             {
                 minDistance = distance;
-                closest = ghostT;
+                closest = ghost.transform;
             }
         }
         
@@ -199,11 +197,8 @@ public class Pacman : MonoBehaviour
         Transform closest = null;
         float minDistance = float.MaxValue;
         
-        foreach (Transform ghostT in ghosts)
+        foreach (Ghost ghost in GameManager.Instance.Ghosts)
         {
-            if (ghostT == null) continue;
-            
-            Ghost ghost = ghostT.GetComponent<Ghost>();
             if (ghost == null) continue;
             
             // On veut uniquement les frightened
@@ -213,12 +208,12 @@ public class Pacman : MonoBehaviour
             if (ghost.home != null && ghost.home.enabled) continue;
             
             // Calculer distance
-            float distance = Vector2.Distance(transform.position, ghostT.position);
+            float distance = Vector2.Distance(transform.position, ghost.transform.position);
             
             if (distance < minDistance)
             {
                 minDistance = distance;
-                closest = ghostT;
+                closest = ghost.transform;
             }
         }
         
@@ -339,11 +334,8 @@ public class Pacman : MonoBehaviour
 
     private bool IsPelletSafe(Transform pellet, float safeDistance)
     {
-        foreach (Transform ghostT in ghosts)
+        foreach (Ghost ghost in GameManager.Instance.Ghosts)
         {
-            if (ghostT == null) continue;
-            
-            Ghost ghost = ghostT.GetComponent<Ghost>();
             if (ghost == null) continue;
             
             // Ignorer les fantômes frightened (pas dangereux)
@@ -353,7 +345,7 @@ public class Pacman : MonoBehaviour
             if (ghost.home != null && ghost.home.enabled) continue;
             
             // Vérifier la distance
-            float distance = Vector2.Distance(pellet.position, ghostT.position);
+            float distance = Vector2.Distance(pellet.position, ghost.transform.position);
             
             if (distance < safeDistance)
                 return false; // Pellet dangereuse
@@ -430,11 +422,8 @@ public class Pacman : MonoBehaviour
     {
         float minDistanceToGhost = float.MaxValue;
         
-        foreach (Transform ghostT in ghosts)
+        foreach (Ghost ghost in GameManager.Instance.Ghosts)
         {
-            if (ghostT == null) continue;
-            
-            Ghost ghost = ghostT.GetComponent<Ghost>();
             if (ghost == null) continue;
             
             // Ignorer les fantômes frightened
@@ -444,7 +433,7 @@ public class Pacman : MonoBehaviour
             if (ghost.home != null && ghost.home.enabled) continue;
             
             // Distance au fantôme
-            float distance = Vector2.Distance(position, ghostT.position);
+            float distance = Vector2.Distance(position, ghost.transform.position);
             
             if (distance < minDistanceToGhost)
                 minDistanceToGhost = distance;

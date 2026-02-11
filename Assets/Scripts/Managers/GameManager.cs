@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     [Header("Game Elements")]
-    private Ghost[] ghosts;
+    public Ghost[] Ghosts { get; private set; }
     [SerializeField] private Pacman pacman;
     [SerializeField] private Transform pellets;
     [SerializeField] private ExperienceManager experienceManager;
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         if (ghostBuilder != null)
         {
             ghostBuilder.BuildGhosts(ghostPrefab, ghostParent, pacman, ghostHomeInside, ghostHomeOutside);
-            ghosts = ghostBuilder.ghosts;
+            Ghosts = ghostBuilder.ghosts;
         }
         else
         {
@@ -92,8 +92,8 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
-        for (int i = 0; i < ghosts.Length; i++) {
-            ghosts[i].ResetState();
+        for (int i = 0; i < Ghosts.Length; i++) {
+            Ghosts[i].ResetState();
         }
 
         pacman.ResetState();
@@ -103,8 +103,8 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.enabled = true;
 
-        for (int i = 0; i < ghosts.Length; i++) {
-            ghosts[i].gameObject.SetActive(false);
+        for (int i = 0; i < Ghosts.Length; i++) {
+            Ghosts[i].gameObject.SetActive(false);
         }
 
         pacman.gameObject.SetActive(false);
@@ -186,14 +186,14 @@ public class GameManager : MonoBehaviour
         var pacmanCollector = collector.GetComponent<Pacman>();
         if (pacmanCollector != null)
         {
-            for (int i = 0; i < ghosts.Length; i++) 
+            for (int i = 0; i < Ghosts.Length; i++) 
             {
-                ghosts[i].frightened.Enable(ghosts[i].frightened.duration);
+                Ghosts[i].frightened.Enable(Ghosts[i].frightened.duration);
             }
 
             SetScorePacman(scorePacman + pellet.points);
             CancelInvoke(nameof(ResetGhostMultiplier));
-            Invoke(nameof(ResetGhostMultiplier), ghosts[0].frightened.duration);
+            Invoke(nameof(ResetGhostMultiplier), Ghosts[0].frightened.duration);
         }
         else
         {
