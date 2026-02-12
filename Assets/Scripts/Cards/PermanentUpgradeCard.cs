@@ -13,8 +13,8 @@ namespace PermanentUpgradeCardSpace
         public string upgradeName;
         public string upgradeDescription;
 
-        [Header("Health and Points Upgrades")]
-        public int healthIncrease;
+        [Header("Lives and Points Upgrades")]
+        public int livesIncrease;
         public int pointsDecrease;
         
         [Header("Movement and Behavior Upgrades")]
@@ -41,7 +41,7 @@ namespace PermanentUpgradeCardSpace
 
         public void DisplayCardInfo()
         {
-            Debug.Log($"Health Increase: {healthIncrease}\n" +
+            Debug.Log($"Lives Increase: {livesIncrease}\n" +
                       $"Points Decrease: {pointsDecrease}\n" +
                       $"Base Speed Increase: {baseSpeedIncrease}\n" +
                       $"Base Speed Multiplier Increase: {baseSpeedMultiplierIncrease}\n" +

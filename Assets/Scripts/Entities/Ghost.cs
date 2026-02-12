@@ -13,6 +13,7 @@ public class Ghost : MonoBehaviour
     public GhostBehaviorType initialBehaviorType;
     public Transform target;
     public int points = 200;
+    public int lives = 1;
 
     private void Awake()
     {
@@ -50,7 +51,7 @@ public class Ghost : MonoBehaviour
 
     public void SetPosition(Vector3 position)
     {
-        // Keep the z-position the same since it determines draw depth
+        // Z détermine la profondeur de dessin, donc on la garde inchangée
         position.z = transform.position.z;
         transform.position = position;
     }

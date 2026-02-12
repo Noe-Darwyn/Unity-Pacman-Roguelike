@@ -15,7 +15,7 @@ MonoBehaviour:
   Sprite: {fileID: 0}
   ghostName: 
   description: 
-  health: 0
+  lives: 1
   points: 0
   initialBehaviorType: 1
   baseSpeed: 4

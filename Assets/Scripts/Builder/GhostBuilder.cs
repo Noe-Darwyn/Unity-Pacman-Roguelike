@@ -63,6 +63,7 @@ public class GhostBuilder : MonoBehaviour
         {
             ghosts[i].initialBehaviorType = ghostCardData[i].initialBehaviorType;
 
+            ghosts[i].lives = upgradedGhostData.upgradedLives[i];
             ghosts[i].points = upgradedGhostData.upgradedPoints[i];
             
             ghosts[i].movement.speed = upgradedGhostData.upgradedBaseSpeed[i];

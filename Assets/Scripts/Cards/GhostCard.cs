@@ -13,9 +13,9 @@ namespace GhostCardSpace
         public string ghostName;
         public string description;
 
-        [Header("Health and Points")]
-        public int health;
-        public int points = 0;
+        [Header("Lives and Points")]
+        public int lives;
+        public int points;
 
         [Header("Movement and Behavior Stats")]
         public GhostBehaviorType initialBehaviorType;
@@ -43,7 +43,7 @@ namespace GhostCardSpace
         
         public void DisplayCardInfo()
         {
-            Debug.Log($"Health: {health}\n" +
+            Debug.Log($"Lives: {lives}\n" +
                       $"Points: {points}\n" +
                       $"Base Speed: {baseSpeed}\n" +
                       $"Base Speed Multiplier: {baseSpeedMultiplier}\n" +

@@ -15,7 +15,8 @@ MonoBehaviour:
   upgradeSprite: {fileID: 0}
   upgradeName: 
   upgradeDescription: 
-  healthIncrease: 0
+  livesIncrease: 1
+  pointsDecrease: 0
   baseSpeedIncrease: 0
   baseSpeedMultiplierIncrease: 0
   chaseDurationIncrease: 1
@@ -24,6 +25,6 @@ MonoBehaviour:
   respawnDurationDecrease: 0
   scatterDurationIncrease: 0
   scatterSpeedMultiplierIncrease: 0
-  scatterProximityIncrease: 1
+  cornerProximityIncrease: 0
   frightenedDurationDecrease: 0
   frightenedSpeedMultiplierIncrease: 0

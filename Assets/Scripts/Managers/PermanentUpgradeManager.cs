@@ -11,6 +11,7 @@ public class PermanentUpgradeManager : MonoBehaviour
 
     // Tableaux pour stocker les stats améliorées de chaque ghost après application des upgrades
     //Base
+    public int[] upgradedLives { get; private set; }
     public int[] upgradedPoints { get; private set; }
     public float[] upgradedBaseSpeed { get; private set; }
     public float[] upgradedBaseSpeedMultiplier { get; private set; }
@@ -48,6 +49,7 @@ public class PermanentUpgradeManager : MonoBehaviour
     {
         int ghostCount = ghostCardData.Length;
         
+        upgradedLives = new int[ghostCount];  
         upgradedPoints = new int[ghostCount];
         upgradedBaseSpeed = new float[ghostCount];
         upgradedBaseSpeedMultiplier = new float[ghostCount];
@@ -62,6 +64,7 @@ public class PermanentUpgradeManager : MonoBehaviour
         // Initialiser avec les stats de base des ghosts
         for (int i = 0; i < ghostCount; i++)
         {
+            upgradedLives[i] = ghostCardData[i].lives;
             upgradedPoints[i] = ghostCardData[i].points;
             upgradedBaseSpeed[i] = ghostCardData[i].baseSpeed;
             upgradedBaseSpeedMultiplier[i] = ghostCardData[i].baseSpeedMultiplier;
@@ -79,6 +82,7 @@ public class PermanentUpgradeManager : MonoBehaviour
     void CalculatePermanentUpgrades() 
     { 
         // Variables locales pour le cumul des bonus
+        int totalLivesBonus = 0;
         int totalPointsBonus = 0;
         float totalBaseSpeedBonus = 0f;
         float totalBaseSpeedMultiplierBonus = 0f;
@@ -95,6 +99,7 @@ public class PermanentUpgradeManager : MonoBehaviour
         {
             PermanentUpgradeCard upgrade = availableUpgrades[i];
             
+            totalLivesBonus += upgrade.livesIncrease;
             totalPointsBonus -= upgrade.pointsDecrease;
             totalBaseSpeedBonus += upgrade.baseSpeedIncrease;
             totalBaseSpeedMultiplierBonus += upgrade.baseSpeedMultiplierIncrease;
@@ -110,6 +115,7 @@ public class PermanentUpgradeManager : MonoBehaviour
         // Appliquer les bonus cumulés à chaque ghost
         for (int i = 0; i < ghostCardData.Length; i++)
         {
+            upgradedLives[i] += totalLivesBonus;
             upgradedPoints[i] += totalPointsBonus;
             upgradedBaseSpeed[i] += totalBaseSpeedBonus;
             upgradedBaseSpeedMultiplier[i] += totalBaseSpeedMultiplierBonus;
