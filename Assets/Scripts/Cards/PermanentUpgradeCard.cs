@@ -9,9 +9,9 @@ namespace PermanentUpgradeCardSpace
     public class PermanentUpgradeCard : ScriptableObject
     {
         [Header("Basic Info")]
-        public Sprite upgradeSprite;
-        public string upgradeName;
-        public string upgradeDescription;
+        public Sprite permanentUpgradeSprite;
+        public string permanentUpgradeName;
+        public string permanentUpgradeDescription;
 
         [Header("Lives and Points Upgrades")]
         public int livesIncrease;
@@ -39,7 +39,7 @@ namespace PermanentUpgradeCardSpace
         public int frightenedDurationDecrease;
         public float frightenedSpeedMultiplierIncrease;
 
-        public void DisplayCardInfo()
+        public void DisplayPermanentUpgradeCardInfo()
         {
             Debug.Log($"Lives Increase: {livesIncrease}\n" +
                       $"Points Decrease: {pointsDecrease}\n" +

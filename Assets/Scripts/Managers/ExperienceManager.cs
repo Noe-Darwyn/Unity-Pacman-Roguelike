@@ -45,6 +45,8 @@ public class ExperienceManager : MonoBehaviour
     {
         previousLevelExperience = (int)experienceCurve.Evaluate(currentLevel);
         nextLevelExperience = (int)experienceCurve.Evaluate(currentLevel + 1);
+        // Donne le choix de selectionner une upgrade
+
         UpdateInterface();
     }
 

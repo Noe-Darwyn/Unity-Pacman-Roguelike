@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91e138b7fd480d349871ac6e94826e68, type: 3}
-  m_Name: GhostCard_Base01
+  m_Name: GhostCardSO_Base01
   m_EditorClassIdentifier: Assembly-CSharp::GhostCardSpace.GhostCard
   Sprite: {fileID: 0}
   ghostName: 

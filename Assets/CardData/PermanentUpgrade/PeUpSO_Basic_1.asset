@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee95fadd460bf0944bc280ba491e8c20, type: 3}
-  m_Name: PeUp_Chase_1
+  m_Name: PeUpSO_Basic_1
   m_EditorClassIdentifier: Assembly-CSharp::PermanentUpgradeCardSpace.PermanentUpgradeCard
   upgradeSprite: {fileID: 0}
   upgradeName: 
   upgradeDescription: 
-  livesIncrease: 0
+  healthIncrease: 0
   pointsDecrease: 0
-  baseSpeedIncrease: 0
-  baseSpeedMultiplierIncrease: 0
-  chaseDurationIncrease: 1
-  chaseSpeedMultiplierIncrease: 0.5
+  baseSpeedIncrease: 1
+  baseSpeedMultiplierIncrease: 1
+  chaseDurationIncrease: 0
+  chaseSpeedMultiplierIncrease: 0
   packProximityIncrease: 0
   respawnDurationDecrease: 0
   scatterDurationIncrease: 0
