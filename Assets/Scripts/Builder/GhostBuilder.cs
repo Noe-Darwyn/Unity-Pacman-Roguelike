@@ -63,7 +63,8 @@ public class GhostBuilder : MonoBehaviour
         {
             ghosts[i].initialBehaviorType = ghostCardData[i].initialBehaviorType;
 
-            ghosts[i].lives = upgradedGhostData.upgradedLives[i];
+            // Initialiser le GhostLifeManager avec les vies améliorées
+            ghosts[i].lifeManager.Initialize(upgradedGhostData.upgradedLives[i]);
             ghosts[i].points = upgradedGhostData.upgradedPoints[i];
             
             ghosts[i].movement.speed = upgradedGhostData.upgradedBaseSpeed[i];

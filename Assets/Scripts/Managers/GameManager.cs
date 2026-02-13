@@ -75,8 +75,18 @@ public class GameManager : MonoBehaviour
         SetScoreGhost(0);
         experienceManager.SetExperience();
         SetLives(3);
+        ResetGhostLives();
         NewRound();
-        
+    }
+
+    // Réinitialise les vies de tous les fantômes à leur maximum
+    private void ResetGhostLives()
+    {
+        for (int i = 0; i < Ghosts.Length; i++)
+        {
+            Ghosts[i].lifeManager.ResetLives();
+            Ghosts[i].gameObject.SetActive(true);
+        }
     }
 
     private void NewRound()
@@ -93,7 +103,10 @@ public class GameManager : MonoBehaviour
     private void ResetState()
     {
         for (int i = 0; i < Ghosts.Length; i++) {
-            Ghosts[i].ResetState();
+            // Ne réactiver que les fantômes qui ont encore des vies
+            if (Ghosts[i].lifeManager.IsAlive) {
+                Ghosts[i].ResetState();
+            }
         }
 
         pacman.ResetState();
@@ -144,8 +157,49 @@ public class GameManager : MonoBehaviour
     {
         int points = ghost.points * ghostMultiplier;
         SetScorePacman(scorePacman + points);
-
         ghostMultiplier++;
+
+        // Gérer les vies du fantôme
+        bool canRespawn = ghost.lifeManager.OnEaten();
+        
+        if (canRespawn)
+        {
+            // Le fantôme a encore des vies, il respawn
+            ghost.lifeManager.TriggerRespawn();
+        }
+        else
+        {
+            // Le fantôme n'a plus de vies, le désactiver
+            ghost.gameObject.SetActive(false);
+            
+            // Vérifier si tous les fantômes sont morts
+            if (AreAllGhostsDead())
+            {
+                GhostGameOver();
+            }
+        }
+    }
+
+    // Vérifie si tous les fantômes sont définitivement morts (plus de vies)
+    private bool AreAllGhostsDead()
+    {
+        for (int i = 0; i < Ghosts.Length; i++)
+        {
+            if (Ghosts[i].lifeManager.IsAlive)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Appelé quand tous les fantômes sont morts - Victoire de Pacman
+    private void GhostGameOver()
+    {
+        Debug.Log("Tous les fantômes sont morts! Pacman gagne!");
+        gameOverText.text = "PACMAN WINS!";
+        gameOverText.enabled = true;
+        pacman.gameObject.SetActive(false);
     }
 
     public void PelletEaten(Pellet pellet, MonoBehaviour collector)

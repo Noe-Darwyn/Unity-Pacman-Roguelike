@@ -669,9 +669,6 @@ MonoBehaviour:
   upgradedGhostData: {fileID: 469897154}
   ghosts:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &469897154
 MonoBehaviour:
   m_ObjectHideFlags: 0

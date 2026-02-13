@@ -2,6 +2,7 @@ using UnityEngine;
 
 [DefaultExecutionOrder(-10)]
 [RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(GhostLifeManager))]
 public class Ghost : MonoBehaviour
 {
     public Movement movement { get; private set; }
@@ -9,11 +10,11 @@ public class Ghost : MonoBehaviour
     public GhostScatter scatter { get; private set; }
     public GhostChase chase { get; private set; }
     public GhostFrightened frightened { get; private set; }
+    public GhostLifeManager lifeManager { get; private set; }
     public GhostBehavior initialBehavior;
     public GhostBehaviorType initialBehaviorType;
     public Transform target;
     public int points = 200;
-    public int lives = 1;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class Ghost : MonoBehaviour
         scatter = GetComponent<GhostScatter>();
         chase = GetComponent<GhostChase>();
         frightened = GetComponent<GhostFrightened>();
+        lifeManager = GetComponent<GhostLifeManager>();
         
         initialBehavior = GetBehaviorFromType(initialBehaviorType);
     }

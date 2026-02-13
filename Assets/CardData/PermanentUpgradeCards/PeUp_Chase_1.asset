@@ -15,12 +15,12 @@ MonoBehaviour:
   upgradeSprite: {fileID: 0}
   upgradeName: 
   upgradeDescription: 
-  livesIncrease: 1
+  livesIncrease: 0
   pointsDecrease: 0
   baseSpeedIncrease: 0
   baseSpeedMultiplierIncrease: 0
   chaseDurationIncrease: 1
-  chaseSpeedMultiplierIncrease: 1
+  chaseSpeedMultiplierIncrease: 0.5
   packProximityIncrease: 0
   respawnDurationDecrease: 0
   scatterDurationIncrease: 0
