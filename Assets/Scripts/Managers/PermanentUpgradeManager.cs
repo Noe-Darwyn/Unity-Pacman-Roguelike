@@ -7,7 +7,7 @@ using GhostCardSpace;
 public class PermanentUpgradeManager : MonoBehaviour
 {
     [SerializeField] private GhostCard[] ghostCardData;
-    [SerializeField] private PermanentUpgradeCard[] availableUpgrades;
+    [SerializeField] private List<PermaUpgradeInstance> availableUpgrades = new List<PermaUpgradeInstance>();
 
     // Tableaux pour stocker les stats améliorées de chaque ghost après application des upgrades
     //Base
@@ -34,7 +34,7 @@ public class PermanentUpgradeManager : MonoBehaviour
             return;
         }
 
-        if (availableUpgrades == null || availableUpgrades.Length == 0)
+        if (availableUpgrades == null)// || availableUpgrades.Length == 0)
         {
             Debug.LogError("PermanentUpgradeManager: availableUpgrades is not assigned or empty! Please assign at least one availableUpgrade in the Inspector.");
             return;
@@ -91,6 +91,26 @@ public class PermanentUpgradeManager : MonoBehaviour
         int totalFrightenedDurationBonus = 0;
 
         // Additionner toutes les upgrades
+        foreach (PermaUpgradeInstance upgrade in availableUpgrades)
+        {
+            if (upgrade == null || upgrade.card == null || upgrade.currentLevel == 0)
+            {
+                continue; // Ignorer les upgrades nulles ou non améliorées
+            }
+
+            //On utilise les getters qui s'occupent automatiquement des niveaux
+            totalPointsBonus -= upgrade.GetPointsDecrease();
+            totalBaseSpeedBonus += upgrade.GetBaseSpeedIncrease();
+            totalBaseSpeedMultiplierBonus += upgrade.GetBaseSpeedMultiplierIncrease();
+            totalChaseDurationBonus += upgrade.GetChaseDurationIncrease();
+            totalChaseSpeedMultiplierBonus += upgrade.GetChaseSpeedMultiplierIncrease();
+            totalRespawnDurationBonus -= upgrade.GetRespawnDurationDecrease();
+            totalScatterSpeedMultiplierBonus += upgrade.GetScatterSpeedMultiplierIncrease();
+            totalScatterDurationBonus += upgrade.GetScatterDurationIncrease();
+            totalFrightenedSpeedMultiplierBonus += upgrade.GetFrightenedSpeedMultiplierIncrease();
+            totalFrightenedDurationBonus -= upgrade.GetFrightenedDurationDecrease();
+        }
+        /*
         for (int i = 0; i < availableUpgrades.Length; i++)
         {
             PermanentUpgradeCard upgrade = availableUpgrades[i];
@@ -106,6 +126,7 @@ public class PermanentUpgradeManager : MonoBehaviour
             totalFrightenedSpeedMultiplierBonus += upgrade.frightenedSpeedMultiplierIncrease;
             totalFrightenedDurationBonus -= upgrade.frightenedDurationDecrease;
         }
+        */
 
         // Appliquer les bonus cumulés à chaque ghost
         for (int i = 0; i < ghostCardData.Length; i++)
@@ -126,5 +147,40 @@ public class PermanentUpgradeManager : MonoBehaviour
     public GhostCard[] GetGhostCardData()
     {
         return ghostCardData;
+    }
+
+    public void AddOrUpgradeCard(PermanentUpgradeCard newCard, int newLevel)
+    {
+        if (newCard == null)
+        {
+            Debug.LogError("PermanentUpgradeManager: Cannot add or upgrade a null card!");
+            return;
+        }
+        PermaUpgradeInstance existingUpgrade = availableUpgrades.Find(upgrade => upgrade.card == newCard);
+        if (existingUpgrade != null)
+        {
+            existingUpgrade.currentLevel = newLevel;
+            Debug.Log($"Upgraded existing card: {newCard.upgradeName} to level {newLevel}");
+        }
+        else
+        {
+            PermaUpgradeInstance newInstance = new PermaUpgradeInstance(newCard, newLevel);
+            availableUpgrades.Add(newInstance);
+            Debug.Log($"Added new card: {newCard.upgradeName} at level {newLevel}");
+        }
+
+        //Recalculer les stats
+        RecalculateAllStats();
+    }
+
+    public void RecalculateAllStats()
+    {
+        InitializeUpgradedArrays(); // Réinitialiser les stats aux valeurs de base
+        CalculatePermanentUpgrades(); // Recalculer les bonus cumulés et les appliquer
+    }
+
+    public List<PermaUpgradeInstance> GetAvailableUpgrades()
+    {
+        return availableUpgrades;
     }
 }
