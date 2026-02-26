@@ -21,11 +21,11 @@ public class PermaUpgradeShopUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currencyText;
     
     [Header("Category Tabs")]
-    [SerializeField] private Button tabAll;
-    [SerializeField] private Button tabUnlockTemp;
-    [SerializeField] private Button tabPerfectP;
-    [SerializeField] private Button tabImperfect;
-    [SerializeField] private Button tabPacman;
+    [SerializeField] private Toggle tabAll;
+    [SerializeField] private Toggle tabUnlockTemp;
+    [SerializeField] private Toggle tabPerfectP;
+    [SerializeField] private Toggle tabImperfect;
+    [SerializeField] private Toggle tabPacman;
     
     // État actuel
     private UpgradeCategory? currentFilter = null; // null = afficher tout
@@ -38,6 +38,8 @@ public class PermaUpgradeShopUI : MonoBehaviour
             return;
         
         SetupTabs();
+        if (tabAll != null)
+            tabAll.isOn = true; // Par défaut, afficher tout
         
         GenerateShopUI(null);
         
@@ -89,19 +91,44 @@ public class PermaUpgradeShopUI : MonoBehaviour
     private void SetupTabs()
     {
         if (tabAll != null)
-            tabAll.onClick.AddListener(() => OnCategoryTabClicked(null));
+            tabAll.onValueChanged.AddListener((isOn) => { 
+                if(isOn) 
+                    OnCategoryTabClicked(null); 
+                else 
+                    Debug.Log("All tab deselected (should not happen if using ToggleGroup)");
+            });
         
         if (tabUnlockTemp != null)
-            tabUnlockTemp.onClick.AddListener(() => OnCategoryTabClicked(UpgradeCategory.UnlockTempUpgrade));
+            tabUnlockTemp.onValueChanged.AddListener((isOn) => {
+                if(isOn) 
+                    OnCategoryTabClicked(UpgradeCategory.UnlockTempUpgrade); 
+                else 
+                    Debug.Log("UnlockTemp tab deselected (should not happen if using ToggleGroup)");
+            });
         
         if (tabPerfectP != null)
-            tabPerfectP.onClick.AddListener(() => OnCategoryTabClicked(UpgradeCategory.PerfectPUpgrade));
+            tabPerfectP.onValueChanged.AddListener((isOn) => {
+                if(isOn) 
+                    OnCategoryTabClicked(UpgradeCategory.PerfectPUpgrade); 
+                else 
+                    Debug.Log("PerfectP tab deselected (should not happen if using ToggleGroup)");
+            });
         
         if (tabImperfect != null)
-            tabImperfect.onClick.AddListener(() => OnCategoryTabClicked(UpgradeCategory.ImperfectUpgrade));
+            tabImperfect.onValueChanged.AddListener((isOn) => {
+                if(isOn) 
+                    OnCategoryTabClicked(UpgradeCategory.ImperfectUpgrade); 
+                else 
+                    Debug.Log("Imperfect tab deselected (should not happen if using ToggleGroup)");
+            });
         
         if (tabPacman != null)
-            tabPacman.onClick.AddListener(() => OnCategoryTabClicked(UpgradeCategory.PacmanUpgrade));
+            tabPacman.onValueChanged.AddListener((isOn) => {
+                if(isOn) 
+                    OnCategoryTabClicked(UpgradeCategory.PacmanUpgrade); 
+                else 
+                    Debug.Log("Pacman tab deselected (should not happen if using ToggleGroup)");
+            });
     }
     
     
@@ -146,8 +173,22 @@ public class PermaUpgradeShopUI : MonoBehaviour
         {
             Debug.LogWarning($"No upgrades to display for category: {category}");
         }
+
+        ResetScrollPosition();
     }
-   
+
+    private void ResetScrollPosition()
+    {
+        if (upgradesContainer != null)
+        {
+            ScrollRect scrollRect = upgradesContainer.GetComponentInParent<ScrollRect>();
+            if (scrollRect != null)
+            {
+                scrollRect.verticalNormalizedPosition = 1f; // Remonter en haut
+            }
+        }
+    }
+
     private void ClearShop()
     {
         // Se désabonner et détruire chaque carte

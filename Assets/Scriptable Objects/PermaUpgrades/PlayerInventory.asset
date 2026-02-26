@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd4fa376771d1c47865218057ed66da, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeInventory
-  currency: 5000
+  currency: 41700
   ownedUpgrades: []
