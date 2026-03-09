@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee95fadd460bf0944bc280ba491e8c20, type: 3}
+  m_Name: Upgrade_TankArmor
+  m_EditorClassIdentifier: Assembly-CSharp::PermanentUpgradeCardSpace.PermanentUpgradeCard
+  maxLevel: 3
+  category: 2
+  costs: c8000000f4010000b0040000
+  upgradeSprite: {fileID: 0}
+  upgradeName: Test Tank Armor
+  upgradeDescription: "Augmente la sant\xE9 des fant\xF4mes mais r\xE9duit l\xE9g\xE8rement
+    leur vitesse. Plus r\xE9sistants mais plus lents !"
+  healthIncrease: 3200000064000000c8000000
+  pointsDecrease: 
+  baseSpeedIncrease:
+  - -0.2
+  - -0.4
+  - -0.8
+  baseSpeedMultiplierIncrease: []
+  chaseDurationIncrease: 
+  chaseSpeedMultiplierIncrease: []
+  packProximityIncrease: 
+  respawnDurationDecrease: 
+  scatterDurationIncrease: 
+  scatterSpeedMultiplierIncrease: []
+  cornerProximityIncrease: 
+  frightenedDurationDecrease: 
+  frightenedSpeedMultiplierIncrease: []

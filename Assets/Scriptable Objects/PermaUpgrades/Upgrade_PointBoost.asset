@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee95fadd460bf0944bc280ba491e8c20, type: 3}
+  m_Name: Upgrade_PointBoost
+  m_EditorClassIdentifier: Assembly-CSharp::PermanentUpgradeCardSpace.PermanentUpgradeCard
+  maxLevel: 1
+  category: 1
+  costs: f4010000
+  upgradeSprite: {fileID: 0}
+  upgradeName: Test Point Boost
+  upgradeDescription: "Les fant\xF4mes donnent moins de points quand Pac-Man les
+    mange. Upgrade unique."
+  healthIncrease: 
+  pointsDecrease: 64000000
+  baseSpeedIncrease: []
+  baseSpeedMultiplierIncrease: []
+  chaseDurationIncrease: 
+  chaseSpeedMultiplierIncrease: []
+  packProximityIncrease: 
+  respawnDurationDecrease: 
+  scatterDurationIncrease: 
+  scatterSpeedMultiplierIncrease: []
+  cornerProximityIncrease: 
+  frightenedDurationDecrease: 
+  frightenedSpeedMultiplierIncrease: []
