@@ -10,29 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee95fadd460bf0944bc280ba491e8c20, type: 3}
-  m_Name: Upgrade_SpeedDemon
+  m_Name: SO_PeUp_TankArmor (test)
   m_EditorClassIdentifier: Assembly-CSharp::PermanentUpgradeCardSpace.PermanentUpgradeCard
-  maxLevel: 5
-  category: 1
-  costs: 64000000fa000000f4010000e8030000c4090000
+  maxLevel: 3
+  category: 2
+  costs: c8000000f4010000b0040000
   upgradeSprite: {fileID: 0}
-  upgradeName: Test Speed Demon
-  upgradeDescription: "Augmente la vitesse de base des fant\xF4mes. Ils deviennent
-    plus rapides et plus dangereux !"
-  healthIncrease: 
+  upgradeName: Test Tank Armor
+  upgradeDescription: "Augmente la sant\xE9 des fant\xF4mes mais r\xE9duit l\xE9g\xE8rement
+    leur vitesse. Plus r\xE9sistants mais plus lents !"
+  healthIncrease: 3200000064000000c8000000
   pointsDecrease: 
   baseSpeedIncrease:
-  - 0.5
-  - 1
-  - 2
-  - 3.5
-  - 6
-  baseSpeedMultiplierIncrease:
-  - 0.05
-  - 0.1
-  - 0.2
-  - 0.35
-  - 0.6
+  - -0.2
+  - -0.4
+  - -0.8
+  baseSpeedMultiplierIncrease: []
   chaseDurationIncrease: 
   chaseSpeedMultiplierIncrease: []
   packProximityIncrease: 
