@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
     [Header("Game Elements")]
     public Ghost[] Ghosts { get; private set; }
     [SerializeField] private Pacman pacman;
-    [SerializeField] private Transform pellets;
+    [SerializeField] public Transform pellets;
     [SerializeField] private ExperienceManager experienceManager;
+    [SerializeField] private PelletCyclesManager pelletCyclesManager;
 
     [Header("Ghost Spawning")]
     [SerializeField] private Ghost ghostPrefab;
@@ -205,6 +206,10 @@ public class GameManager : MonoBehaviour
     public void PelletEaten(Pellet pellet, MonoBehaviour collector)
     {
         pellet.gameObject.SetActive(false);
+        // Recalculer le ratio de pellets actifs après qu'un pellet a été mangé
+        pelletCyclesManager.CalculateActivePelletRatio();
+        // Recalculer la vitesse du cycle en fonction du ratio de pellets actifs
+        pelletCyclesManager.CalculateCycleSpeed();
         
         var pacmanCollector = collector.GetComponent<Pacman>();
         var ghostCollector = collector.GetComponent<Ghost>();
@@ -228,8 +233,6 @@ public class GameManager : MonoBehaviour
             {
                 pelletTransform.gameObject.SetActive(true);
             }
-            //pacman.gameObject.SetActive(false);
-            //Invoke(nameof(NewRound), 3f);
         }
     }
 
