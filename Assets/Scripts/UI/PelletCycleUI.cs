@@ -6,30 +6,43 @@ public class PelletCycleUI : MonoBehaviour
 {
     [SerializeField] private PelletCyclesManager pelletCyclesManager;
 
-    [SerializeField] Text cycleTimeText;
-    [SerializeField] Text pelletValueText;
+    [Header("Pellet UI Elements")]
+    [SerializeField] Text pelletCycleTimeText;
+    [SerializeField] Image pelletCycleFiller; 
+    private float timeToCompletePelletCycle;
 
-    [SerializeField] Image pelletCycleFiller;  
-
-    private float timeToCompleteCycle;
+    [Header("Super Pellet UI Elements")]
+    [SerializeField] Text superPelletCycleTimeText;
+    [SerializeField] Image superPelletCycleFiller;  
+    private float timeToCompleteSuperPelletCycle;
 
     void Start()
     {
-        timeToCompleteCycle = pelletCyclesManager.GetTimeToCompleteCycle();
+        timeToCompletePelletCycle = pelletCyclesManager.GetTimeToCompletePelletCycle();
+        timeToCompleteSuperPelletCycle = pelletCyclesManager.GetTimeToCompleteSuperPelletCycle();
     }
 
     void Update()
     {
-        pelletCycleFiller.fillAmount = pelletCyclesManager.GetCurrentCycleTime() / timeToCompleteCycle;
+        UpdatePelletUI();
+        UpdateSuperPelletUI();
+    }
+    void UpdatePelletUI()
+    {
+        pelletCycleFiller.fillAmount = pelletCyclesManager.GetCurrentPelletCycleTime() / timeToCompletePelletCycle;
         
         // Affichage du temps restant dans le cycle au format mm:ss
-        TimeSpan time = TimeSpan.FromSeconds(pelletCyclesManager.GetCurrentCycleTime());
-        cycleTimeText.text = string.Format("{0:D2}:{1:D2}", time.Minutes, time.Seconds);
+        TimeSpan time = TimeSpan.FromSeconds(pelletCyclesManager.GetCurrentPelletCycleTime());
+        pelletCycleTimeText.text = string.Format("{0:D2}:{1:D2}", time.Minutes, time.Seconds);
 
     }
 
-    void UpdatePelletValueText()
+    void UpdateSuperPelletUI()
     {
-        //pelletValueText.text = pelletValue.ToString();
+        superPelletCycleFiller.fillAmount = pelletCyclesManager.GetCurrentSuperPelletCycleTime() / timeToCompleteSuperPelletCycle;
+        
+        // Affichage du temps restant dans le cycle au format mm:ss
+        TimeSpan time = TimeSpan.FromSeconds(pelletCyclesManager.GetCurrentSuperPelletCycleTime());
+        superPelletCycleTimeText.text = string.Format("{0:D2}:{1:D2}", time.Minutes, time.Seconds);
     }
 }
