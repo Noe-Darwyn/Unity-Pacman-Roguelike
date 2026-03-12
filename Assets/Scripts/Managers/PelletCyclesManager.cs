@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PelletCyclesManager : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class PelletCyclesManager : MonoBehaviour
     private float currentPelletCycleSpeed = 1f;
     
     private int totalPellets; 
+    private int totalSuperPellets;
     private float activePelletRatio = 1f; // Ratio de pellets actifs (initialement 100%)
 
     [Header("Super Pellet Cycle Settings")]
@@ -20,7 +20,6 @@ public class PelletCyclesManager : MonoBehaviour
     public float timeToCompleteSuperPelletCycle = 30f; // Temps pour compléter un cycle à 100% de super pellets actifs
 
     private float currentSuperPelletCycleTime = 0f;
-    private float totalSuperPellets; 
 
         void Start()
     {
@@ -113,7 +112,7 @@ public class PelletCyclesManager : MonoBehaviour
     {
         // Moins il reste de pellets actifs, plus la vitesse augmente.
         currentPelletCycleSpeed = Mathf.Lerp(minPelletCycleSpeed, maxPelletCycleSpeed, 1f - activePelletRatio);
-        Debug.Log($"Cycle Speed Updated: {currentPelletCycleSpeed} (Active Pellet Ratio: {activePelletRatio})");
+        //Debug.Log($"Cycle Speed Updated: {currentPelletCycleSpeed} (Active Pellet Ratio: {activePelletRatio})");
     }
 
 
@@ -157,4 +156,5 @@ public class PelletCyclesManager : MonoBehaviour
     {
         return timeToCompleteSuperPelletCycle;
     }
+    
 }

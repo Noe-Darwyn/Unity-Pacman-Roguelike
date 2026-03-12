@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform pellets;
     [SerializeField] private ExperienceManager experienceManager;
     [SerializeField] private PelletCyclesManager pelletCyclesManager;
+    [SerializeField] private ScoreManager scoreManager;
 
     [Header("Ghost Spawning")]
     [SerializeField] private Ghost ghostPrefab;
@@ -72,8 +73,9 @@ public class GameManager : MonoBehaviour
 
     private void NewGame()
     {
-        SetScorePacman(0);
-        SetScoreGhost(0);
+        scoreManager.SetScorePacman(0);
+        scoreManager.SetScoreGhost(0);
+        scoreManager.SetLevelCleared(0);
         experienceManager.SetExperience();
         SetLives(3);
         ResetGhostLives();
@@ -130,17 +132,6 @@ public class GameManager : MonoBehaviour
         livesText.text = "x" + lives.ToString();
     }
 
-    private void SetScorePacman(int scorePacman)
-    {
-        this.scorePacman = scorePacman;
-        scorePacmanText.text = scorePacman.ToString().PadLeft(2, '0');
-    }
-    private void SetScoreGhost(int scoreGhost)
-    {
-        this.scoreGhost = scoreGhost;
-        scoreGhostText.text = scoreGhost.ToString().PadLeft(2, '0');
-    }
-
     public void PacmanEaten()
     {
         pacman.DeathSequence();
@@ -157,7 +148,7 @@ public class GameManager : MonoBehaviour
     public void GhostEaten(Ghost ghost)
     {
         int points = ghost.points * ghostMultiplier;
-        SetScorePacman(scorePacman + points);
+        scoreManager.SetScorePacman(scoreManager.scorePacman + points);
         ghostMultiplier++;
 
         // Gérer les vies du fantôme
@@ -215,13 +206,13 @@ public class GameManager : MonoBehaviour
 
         if (pacmanCollector != null)
         {
-            SetScorePacman(scorePacman + pellet.points);
+            scoreManager.SetScorePacman(scoreManager.scorePacman + pellet.points);
         }
         else
         {
             if (ghostCollector != null)
             {
-                SetScoreGhost(scoreGhost + pellet.points);
+                scoreManager.SetScoreGhost(scoreManager.scoreGhost + pellet.points);
                 experienceManager.AddExperience(pellet.points);
             }
         }
@@ -247,7 +238,7 @@ public class GameManager : MonoBehaviour
                 Ghosts[i].frightened.Enable(Ghosts[i].frightened.duration);
             }
 
-            SetScorePacman(scorePacman + pellet.points);
+            scoreManager.SetScorePacman(scoreManager.scorePacman + pellet.points);
             CancelInvoke(nameof(ResetGhostMultiplier));
             Invoke(nameof(ResetGhostMultiplier), Ghosts[0].frightened.duration);
         }
@@ -256,7 +247,7 @@ public class GameManager : MonoBehaviour
             var ghostCollector = collector.GetComponent<Ghost>();
             if (ghostCollector != null)
             {
-                SetScoreGhost(scoreGhost + pellet.points);
+                scoreManager.SetScoreGhost(scoreManager.scoreGhost + pellet.points);
                 experienceManager.AddExperience(pellet.points);
             }
         }
