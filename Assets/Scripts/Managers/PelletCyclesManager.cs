@@ -21,13 +21,15 @@ public class PelletCyclesManager : MonoBehaviour
 
     private float currentSuperPelletCycleTime = 0f;
 
-        void Start()
+    public void InitiateCycles()
     {
-        InitiatePelletsCounts();
-        ResetCycle();
+        CountTotalPellets();
+
+        ResetNormalPelletCycle();
+        ResetPowerPelletCycle();
     }
 
-    void InitiatePelletsCounts()
+    void CountTotalPellets()
     {
         // Compter le nombre total de pellets normaux et de super pellets au début du jeu
         totalPellets = 0;
@@ -45,20 +47,18 @@ public class PelletCyclesManager : MonoBehaviour
         }
         activePelletRatio = 1f;
     }
-
-        void ResetCycle()
-    {
-        currentPelletCycleTime = timeToCompletePelletCycle;
-        currentPelletCycleSpeed = minPelletCycleSpeed;
-    }
-
     void Update()
     {
         UpdatePelletCycleTimer();
         UpdateSuperPelletCycleTimer();
     }
 
-    // Méthodes pour le cycle de pellets
+    /// <summary>
+    /// CYCLE DES PELLETS NORMAUX :
+    //Vitesse du cycle : moins il reste de pellets actifs, plus le cycle avance vite (vitesse calculée en fonction du ratio de pellets actifs).
+    //Quand le cycle atteint 0 : tous les pellets normaux sont réactivés, et le cycle recommence.
+    /// </summary>
+    
     void UpdatePelletCycleTimer()
     {
         if (currentPelletCycleTime >= 0)
@@ -67,22 +67,26 @@ public class PelletCyclesManager : MonoBehaviour
         }
         else 
         {    
-            // A la fin du cycle, reset les pellets normaux
-            ResetCycle();
-            
-            foreach (Transform pelletTransform in GameManager.Instance.pellets)
+            ResetNormalPelletCycle();
+        }
+    }
+
+        void ResetNormalPelletCycle()
+    {   
+        // Redémarre le timer
+        currentPelletCycleTime = timeToCompletePelletCycle;
+        // Réinitialise la vitesse du cycle à sa valeur minimale
+        currentPelletCycleSpeed = minPelletCycleSpeed;
+        // Réactive tous les pellets normaux
+        foreach (Transform pelletTransform in GameManager.Instance.pellets)
             {
                 if (pelletTransform.gameObject.GetComponent<PowerPellet>() == null)
                 {
                     pelletTransform.gameObject.SetActive(true);
                 }
             }
-
-            // Le recalcul est fait uniquement quand un pellet est mangé.
-            activePelletRatio = 1f;
-            currentPelletCycleSpeed = minPelletCycleSpeed;
-        }
     }
+
 
     public float GetCurrentPelletCycleTime()
     {
@@ -115,7 +119,6 @@ public class PelletCyclesManager : MonoBehaviour
         //Debug.Log($"Cycle Speed Updated: {currentPelletCycleSpeed} (Active Pellet Ratio: {activePelletRatio})");
     }
 
-
     public float GetActivePelletRatio()
     {
         return activePelletRatio;
@@ -126,7 +129,13 @@ public class PelletCyclesManager : MonoBehaviour
         return currentPelletCycleSpeed;
     }
 
-    // Méthodes pour le cycle de super pellets
+    /// <summary>
+    //CYCLE DES SUPER PELLETS : 
+    //Indépendant du cycle de pellets normaux. 
+    //La fréquence est uniquement basée sur le temps écoulé depuis le dernier reset des super pellets.
+    //Quand le cycle atteint 0 : tous les super pellets sont réactivés, et le cycle recommence.
+    /// </summary>
+    
     void UpdateSuperPelletCycleTimer()
     {
         if (currentSuperPelletCycleTime >= 0)
@@ -135,15 +144,20 @@ public class PelletCyclesManager : MonoBehaviour
         }
         else 
         {    
-            // A la fin du cycle, reset les super pellets
-            currentSuperPelletCycleTime = timeToCompleteSuperPelletCycle;
-            
-            foreach (Transform pelletTransform in GameManager.Instance.pellets)
+            ResetPowerPelletCycle();
+        }
+    }
+
+    void ResetPowerPelletCycle()
+    {
+        // Redémarre le timer
+        currentSuperPelletCycleTime = timeToCompleteSuperPelletCycle;
+        // Réactive tous les power pellets
+        foreach (Transform pelletTransform in GameManager.Instance.pellets)
+        {
+            if (pelletTransform.gameObject.GetComponent<PowerPellet>() != null)
             {
-                if (pelletTransform.gameObject.GetComponent<PowerPellet>() != null)
-                {
-                    pelletTransform.gameObject.SetActive(true);
-                }
+                pelletTransform.gameObject.SetActive(true);
             }
         }
     }

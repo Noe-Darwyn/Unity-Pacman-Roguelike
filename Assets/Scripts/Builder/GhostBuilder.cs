@@ -6,6 +6,12 @@ using GhostCardSpace;
 public class GhostBuilder : MonoBehaviour
 {
     [SerializeField] private PermanentUpgradeManager upgradedGhostData;
+    [Header("Ghost Spawning")]
+    [Space(10)]
+    [SerializeField] private Ghost ghostPrefab;
+    [SerializeField] private Transform ghostParent;
+    [SerializeField] private Transform ghostHomeInside;
+    [SerializeField] private Transform ghostHomeOutside;
 
     public Ghost[] ghosts;
 
@@ -13,27 +19,75 @@ public class GhostBuilder : MonoBehaviour
     {
         if (upgradedGhostData == null)
         {
-            Debug.LogError("GhostBuilder: PermanentUpgradeManager instance is not found! Ensure that a PermanentUpgradeManager exists in the scene.");
+            Debug.LogError("[GhostBuilder] Missing reference: upgradedGhostData is not assigned.");
             return;
         }
     } 
 
-    public void BuildGhosts(Ghost ghostPrefab, Transform ghostParent, Pacman pacman, Transform ghostHomeInside, Transform ghostHomeOutside)
+    public void BuildGhosts(Pacman pacman)
     {
+        if (!ValidateReferences(pacman))
+        {
+            ghosts = new Ghost[0];
+            return;
+        }
+
         CreateGhosts(ghostPrefab, ghostParent, pacman, ghostHomeInside, ghostHomeOutside);
+
+        if (ghosts == null || ghosts.Length == 0)
+        {
+            Debug.LogError("[GhostBuilder] Build failed: no ghosts were created.");
+            return;
+        }
         
         SetGhostStats();
     }
 
-    void CreateGhosts(Ghost ghostPrefab, Transform ghostParent, Pacman pacman, Transform ghostHomeInside, Transform ghostHomeOutside)
+    private bool ValidateReferences(Pacman pacman)
     {
+        if (upgradedGhostData == null)
+        {
+            Debug.LogError("[GhostBuilder] Missing reference: upgradedGhostData is not assigned.");
+            return false;
+        }
+
         if (ghostPrefab == null)
         {
-            Debug.LogError("GhostBuilder: Ghost prefab is not assigned!");
+            Debug.LogError("[GhostBuilder] Missing reference: ghostPrefab is not assigned.");
+            return false;
+        }
+
+        if (ghostParent == null)
+        {
+            Debug.LogError("[GhostBuilder] Missing reference: ghostParent is not assigned.");
+            return false;
+        }
+
+        if (ghostHomeInside == null || ghostHomeOutside == null)
+        {
+            Debug.LogError("[GhostBuilder] Missing reference: ghostHomeInside/ghostHomeOutside is not assigned.");
+            return false;
+        }
+
+        if (pacman == null)
+        {
+            Debug.LogError("[GhostBuilder] Missing reference: pacman is not assigned.");
+            return false;
+        }
+
+        return true;
+    }
+
+    void CreateGhosts(Ghost ghostPrefab, Transform ghostParent, Pacman pacman, Transform ghostHomeInside, Transform ghostHomeOutside)
+    {
+        GhostCard[] ghostCardData = upgradedGhostData.GetGhostCardData();
+        if (ghostCardData == null || ghostCardData.Length == 0)
+        {
+            Debug.LogWarning("[GhostBuilder] No ghost card data found. Nothing to spawn.");
+            ghosts = new Ghost[0];
             return;
         }
 
-        GhostCard[] ghostCardData = upgradedGhostData.GetGhostCardData();
         ghosts = new Ghost[ghostCardData.Length];
 
         for (int i = 0; i < ghostCardData.Length; i++)
@@ -57,9 +111,26 @@ public class GhostBuilder : MonoBehaviour
 
     void SetGhostStats()
     {
+        if (ghosts == null || ghosts.Length == 0)
+        {
+            Debug.LogWarning("[GhostBuilder] SetGhostStats skipped: no ghosts to configure.");
+            return;
+        }
+
         GhostCard[] ghostCardData = upgradedGhostData.GetGhostCardData();
+        if (ghostCardData == null || ghostCardData.Length == 0)
+        {
+            Debug.LogWarning("[GhostBuilder] SetGhostStats skipped: no ghost card data found.");
+            return;
+        }
+
+        int count = Mathf.Min(ghosts.Length, ghostCardData.Length);
+        if (count != ghosts.Length || count != ghostCardData.Length)
+        {
+            Debug.LogWarning("[GhostBuilder] Data size mismatch between spawned ghosts and ghost card data. Applying stats to the matching subset.");
+        }
         
-        for (int i = 0; i < ghosts.Length; i++)
+        for (int i = 0; i < count; i++)
         {
             ghosts[i].initialBehaviorType = ghostCardData[i].initialBehaviorType;
 

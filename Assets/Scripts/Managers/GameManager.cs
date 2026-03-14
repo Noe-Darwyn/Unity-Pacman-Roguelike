@@ -13,16 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ExperienceManager experienceManager;
     [SerializeField] private PelletCyclesManager pelletCyclesManager;
     [SerializeField] private ScoreManager scoreManager;
-
-    [Header("Ghost Spawning")]
-    [SerializeField] private Ghost ghostPrefab;
-    [SerializeField] private Transform ghostParent;
-    [SerializeField] private Transform ghostHomeInside;
-    [SerializeField] private Transform ghostHomeOutside;
+    [SerializeField] private GhostBuilder ghostBuilder;
 
     [Header("Interface Elements")]
-    [SerializeField] private Text scorePacmanText;
-    [SerializeField] private Text scoreGhostText;
     [SerializeField] private Text livesText;
     [SerializeField] private Text gameOverText;
 
@@ -50,15 +43,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GhostBuilder ghostBuilder = FindObjectOfType<GhostBuilder>();
-        if (ghostBuilder != null)
+        if (ghostBuilder == null)
         {
-            ghostBuilder.BuildGhosts(ghostPrefab, ghostParent, pacman, ghostHomeInside, ghostHomeOutside);
-            Ghosts = ghostBuilder.ghosts;
+            Debug.LogError("[GameManager] Missing reference: ghostBuilder is not assigned.");
+            return;
         }
-        else
+
+        if (pacman == null)
         {
-            Debug.LogError("GameManager: GhostBuilder not found in the scene!");
+            Debug.LogError("[GameManager] Missing reference: pacman is not assigned.");
+            return;
+        }
+
+        ghostBuilder.BuildGhosts(pacman);
+        Ghosts = ghostBuilder.ghosts;
+
+        if (Ghosts == null || Ghosts.Length == 0)
+        {
+            Debug.LogError("[GameManager] Initialization failed: no ghosts were built.");
+            return;
         }
 
         NewGame();
@@ -95,11 +98,7 @@ public class GameManager : MonoBehaviour
     private void NewRound()
     {
         gameOverText.enabled = false;
-
-        foreach (Transform pellet in pellets) {
-            pellet.gameObject.SetActive(true);
-        }
-
+        pelletCyclesManager.InitiateCycles();
         ResetState();
     }
 

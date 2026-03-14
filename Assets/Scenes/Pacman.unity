@@ -1011,12 +1011,7 @@ MonoBehaviour:
   experienceManager: {fileID: 572888031}
   pelletCyclesManager: {fileID: 469897155}
   scoreManager: {fileID: 469897156}
-  ghostPrefab: {fileID: 3259707676119580883, guid: 2fde9760580df734b965459e729d1aba, type: 3}
-  ghostParent: {fileID: 1200452626}
-  ghostHomeInside: {fileID: 40866121}
-  ghostHomeOutside: {fileID: 918157309}
-  scorePacmanText: {fileID: 1945791160}
-  scoreGhostText: {fileID: 1146465693}
+  ghostBuilder: {fileID: 469897153}
   livesText: {fileID: 278868602}
   gameOverText: {fileID: 1133529214}
 --- !u!4 &469897152
@@ -1047,6 +1042,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostBuilder
   upgradedGhostData: {fileID: 469897154}
+  ghostPrefab: {fileID: 3259707676119580883, guid: 2fde9760580df734b965459e729d1aba, type: 3}
+  ghostParent: {fileID: 1200452626}
+  ghostHomeInside: {fileID: 40866121}
+  ghostHomeOutside: {fileID: 918157309}
   ghosts:
   - {fileID: 0}
 --- !u!114 &469897154
