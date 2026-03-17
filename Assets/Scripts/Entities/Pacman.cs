@@ -47,7 +47,7 @@ public class Pacman : MonoBehaviour
         // MODE FUITE 
         Vector2 fleeDirection = TryFleeMode();
         if (fleeDirection != Vector2.zero) {
-            Debug.Log("MODE FUITE activé - Direction: " + fleeDirection);
+            //Debug.Log("MODE FUITE activé - Direction: " + fleeDirection);
             return fleeDirection;
         }
         
@@ -55,13 +55,13 @@ public class Pacman : MonoBehaviour
         Vector2 chaseDirection = TryChaseMode();
         if (chaseDirection != Vector2.zero)
         {
-            Debug.Log("MODE CHASSE activé - Direction: " + chaseDirection);
+            //Debug.Log("MODE CHASSE activé - Direction: " + chaseDirection);
             return chaseDirection;
         }
         
         // MODE COLLECTE (par défaut)
         Vector2 collectDirection = CollectMode();
-        Debug.Log("MODE COLLECTE activé - Direction: " + collectDirection);
+        //Debug.Log("MODE COLLECTE activé - Direction: " + collectDirection);
         return collectDirection;
     }
 
@@ -143,7 +143,7 @@ public class Pacman : MonoBehaviour
             // Ignorer direction si bloquée par un mur
             if (movement.Occupied(dir))
             {
-                Debug.Log($"Direction {dir} : BLOQUÉE");
+                //Debug.Log($"Direction {dir} : BLOQUÉE");
                 continue;
             }
             
@@ -283,7 +283,7 @@ public class Pacman : MonoBehaviour
     {
         // Trouver la pellet cible
         Transform targetPellet = GetTargetPellet();
-        Debug.Log("Pellet cible transform : " + targetPellet.transform.position.x + "," + targetPellet.transform.position.y);
+        //Debug.Log("Pellet cible transform : " + targetPellet.transform.position.x + "," + targetPellet.transform.position.y);
         
         if (targetPellet == null)
         {
@@ -301,7 +301,7 @@ public class Pacman : MonoBehaviour
         pellets.RemoveAll(p => p == null || !p.gameObject.activeInHierarchy);
         
         if (pellets.Count == 0){
-            Debug.Log("Aucune pellet restante !");
+            //Debug.Log("Aucune pellet restante !");
             return null;
         }
         
@@ -372,14 +372,14 @@ public class Pacman : MonoBehaviour
         
         bool inCorridor = availableDirections <= 2;
         
-        Debug.Log($"=== COLLECTE - Vers pellet {targetPellet.name} (disponibles: {availableDirections}, couloir: {inCorridor}) ===");
+        //Debug.Log($"=== COLLECTE - Vers pellet {targetPellet.name} (disponibles: {availableDirections}, couloir: {inCorridor}) ===");
         
         foreach (Vector2 dir in directions)
         {
             // Ignorer direction si bloquée par un mur
             if (movement.Occupied(dir))
             {
-                Debug.Log($"Direction {dir} : BLOQUÉE");
+                //Debug.Log($"Direction {dir} : BLOQUÉE");
                 continue;
             }
             
@@ -387,7 +387,7 @@ public class Pacman : MonoBehaviour
             bool isOpposite = Vector2.Dot(dir, opposite) > 0.9f;
             if (inCorridor && isOpposite)
             {
-                Debug.Log($"Direction {dir} : DEMI-TOUR INTERDIT (couloir)");
+                //Debug.Log($"Direction {dir} : DEMI-TOUR INTERDIT (couloir)");
                 continue;
             }
             
