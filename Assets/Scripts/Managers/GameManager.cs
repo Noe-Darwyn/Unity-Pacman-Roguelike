@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GhostBuilder ghostBuilder;
 
     [Header("Interface Elements")]
-    [SerializeField] private Text livesText;
+    [SerializeField] private Text pacmanLivesText;
+    [SerializeField] private Text ghostLivesText;
     [SerializeField] private Text gameOverText;
 
     public int scorePacman { get; private set; } = 0;
     public int scoreGhost { get; private set; } = 0;
-    public int lives { get; private set; } = 3;
+    public int pacmanLives { get; private set; } = 3;
+    public int ghostLives { get; private set; } = 3;
 
     private int ghostMultiplier = 1;
 
@@ -69,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (lives <= 0 && Input.anyKeyDown) {
+        if (pacmanLives <= 0 && Input.anyKeyDown) {
             NewGame();
         }
     }
@@ -80,8 +82,9 @@ public class GameManager : MonoBehaviour
         scoreManager.SetScoreGhost(0);
         scoreManager.SetLevelCleared(0);
         experienceManager.SetExperience();
-        SetLives(3);
+        SetPacmanLives(3);
         ResetGhostLives();
+        CalculateGhostLives();
         NewRound();
     }
 
@@ -125,19 +128,35 @@ public class GameManager : MonoBehaviour
         pacman.gameObject.SetActive(false);
     }
 
-    private void SetLives(int lives)
+    private void CalculateGhostLives()
     {
-        this.lives = lives;
-        livesText.text = "x" + lives.ToString();
+        int totalGhostLives = 0;
+        for (int i = 0; i < Ghosts.Length; i++)
+        {
+            totalGhostLives += Ghosts[i].lifeManager.CurrentLives;
+        }
+        SetTotalGhostLives(totalGhostLives);
+    }
+
+    private void SetTotalGhostLives(int ghostLives)
+    {
+        this.ghostLives = ghostLives;
+        ghostLivesText.text = "x" + ghostLives.ToString();
+    }
+
+    private void SetPacmanLives(int pacmanLives)
+    {
+        this.pacmanLives = pacmanLives;
+        pacmanLivesText.text = "x" + pacmanLives.ToString();
     }
 
     public void PacmanEaten()
     {
         pacman.DeathSequence();
 
-        SetLives(lives - 1);
+        SetPacmanLives(pacmanLives - 1);
 
-        if (lives > 0) {
+        if (pacmanLives > 0) {
             Invoke(nameof(ResetState), 3f);
         } else {
             GameOver();
@@ -152,7 +171,10 @@ public class GameManager : MonoBehaviour
 
         // Gérer les vies du fantôme
         bool canRespawn = ghost.lifeManager.OnEaten();
+        CalculateGhostLives();
         
+        // Met à jour l'affichage des vies de tous les fantômes
+
         if (canRespawn)
         {
             // Le fantôme a encore des vies, il respawn
@@ -169,6 +191,7 @@ public class GameManager : MonoBehaviour
                 GhostGameOver();
             }
         }
+
     }
 
     // Vérifie si tous les fantômes sont définitivement morts (plus de vies)
