@@ -1012,6 +1012,7 @@ MonoBehaviour:
   pelletCyclesManager: {fileID: 469897155}
   scoreManager: {fileID: 469897156}
   ghostBuilder: {fileID: 469897153}
+  timeManager: {fileID: 474618201}
   livesText: {fileID: 278868602}
   gameOverText: {fileID: 1133529214}
 --- !u!4 &469897152
@@ -1068,6 +1069,7 @@ MonoBehaviour:
   availableUpgrades:
   - card: {fileID: 0}
     currentLevel: 0
+  playerInventory: {fileID: 11400000, guid: d4e82b66020c4ce4d98c9586c39a58be, type: 2}
 --- !u!114 &469897155
 MonoBehaviour:
   m_ObjectHideFlags: 0

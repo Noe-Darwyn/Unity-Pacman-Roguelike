@@ -8,6 +8,7 @@ public class PermanentUpgradeManager : MonoBehaviour
 {
     [SerializeField] private GhostCard[] ghostCardData;
     [SerializeField] private List<PermaUpgradeInstance> availableUpgrades = new List<PermaUpgradeInstance>();
+    [SerializeField] private PlayerUpgradeInventory playerInventory;
 
     // Tableaux pour stocker les stats améliorées de chaque ghost après application des upgrades
     //Base
@@ -40,6 +41,14 @@ public class PermanentUpgradeManager : MonoBehaviour
             Debug.LogError("PermanentUpgradeManager: availableUpgrades is not assigned or empty! Please assign at least one availableUpgrade in the Inspector.");
             return;
         }
+
+        if (playerInventory == null)
+        {
+            Debug.LogError("PermanentUpgradeManager: playerInventory is not assigned! Please assign a PlayerUpgradeInventory in the Inspector.");
+            return;
+        }
+
+        LoadFromInventory();
 
         InitializeUpgradedArrays();
         CalculatePermanentUpgrades();
@@ -188,5 +197,24 @@ public class PermanentUpgradeManager : MonoBehaviour
     public List<PermaUpgradeInstance> GetAvailableUpgrades()
     {
         return availableUpgrades;
+    }
+
+    void LoadFromInventory()
+    {
+        availableUpgrades.Clear();
+
+        var owned = playerInventory.GetAllOwnedUpgrades();
+
+        foreach (var upgrade in owned)
+        {
+            if (upgrade.card == null || upgrade.currentLevel <= 0)
+                continue;
+
+            availableUpgrades.Add(
+                new PermaUpgradeInstance(upgrade.card, upgrade.currentLevel)
+            );
+        }
+
+        Debug.Log($"Loaded {availableUpgrades.Count} upgrades from inventory");
     }
 }
