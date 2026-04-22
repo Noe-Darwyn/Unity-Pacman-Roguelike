@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PelletCyclesManager pelletCyclesManager;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private GhostBuilder ghostBuilder;
-    [SerializeField] private TimeManager timeManager;
 
     [Header("Interface Elements")]
     [SerializeField] private Text pacmanLivesText;
@@ -72,9 +71,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if ((lives <= 0 || AreAllGhostsDead()) && Input.anyKeyDown) {
-            //NewGame();
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+        if (pacmanLives <= 0 && Input.anyKeyDown) {
+            NewGame();
         }
     }
 
@@ -121,7 +119,6 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        timeManager?.OnTimeResume();
         gameOverText.enabled = true;
 
         for (int i = 0; i < Ghosts.Length; i++) {
@@ -215,9 +212,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Tous les fantômes sont morts! Pacman gagne!");
         gameOverText.text = "PACMAN WINS!";
-        //gameOverText.enabled = true;
-        //pacman.gameObject.SetActive(false);
-        GameOver();
+        gameOverText.enabled = true;
+        pacman.gameObject.SetActive(false);
     }
 
     public void PelletEaten(Pellet pellet, MonoBehaviour collector)
