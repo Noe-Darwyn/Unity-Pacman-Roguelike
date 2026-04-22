@@ -277,6 +277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Ghost_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 5986231755326378737, guid: db866e81b8c7f284084e5b25656b4d2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1148,6 +1152,7 @@ MonoBehaviour:
   pelletCyclesManager: {fileID: 469897155}
   scoreManager: {fileID: 469897156}
   ghostBuilder: {fileID: 469897153}
+  timeManager: {fileID: 474618201}
   pacmanLivesText: {fileID: 278868602}
   ghostLivesText: {fileID: 250923287}
   gameOverText: {fileID: 1133529214}
@@ -1205,6 +1210,7 @@ MonoBehaviour:
   availableUpgrades:
   - card: {fileID: 0}
     currentLevel: 0
+  playerInventory: {fileID: 11400000, guid: d4e82b66020c4ce4d98c9586c39a58be, type: 2}
 --- !u!114 &469897155
 MonoBehaviour:
   m_ObjectHideFlags: 0
