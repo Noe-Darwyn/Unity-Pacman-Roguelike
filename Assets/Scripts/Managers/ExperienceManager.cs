@@ -15,6 +15,7 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] private Text levelText;
     [SerializeField] private Text experienceText;
     [SerializeField] private Image experiencefill;
+    [SerializeField] private RunUpgradeController runUpgradeController;
 
     public void SetExperience()
     {
@@ -46,6 +47,7 @@ public class ExperienceManager : MonoBehaviour
         previousLevelExperience = (int)experienceCurve.Evaluate(currentLevel);
         nextLevelExperience = (int)experienceCurve.Evaluate(currentLevel + 1);
         // Donne le choix de selectionner une upgrade
+        if (currentLevel != 0) runUpgradeController.TriggerUpgradeChoice();
 
         UpdateInterface();
     }
