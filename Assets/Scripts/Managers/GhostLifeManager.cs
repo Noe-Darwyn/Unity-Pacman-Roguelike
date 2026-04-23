@@ -9,8 +9,8 @@ public class GhostLifeManager : MonoBehaviour
     private Ghost ghost;
     
     [Header("Life Stats")]
-    [SerializeField] private int currentLives;
-    [SerializeField] private int maxLives;
+    public int currentLives;
+    public int maxLives;
     
     // Events pour l'UI et autres systèmes
     public event Action<int, int> OnLifeChanged;  // (currentLives, maxLives)

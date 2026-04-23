@@ -11,6 +11,12 @@ public class Ghost : MonoBehaviour
     public GhostChase chase { get; private set; }
     public GhostFrightened frightened { get; private set; }
     public GhostLifeManager lifeManager { get; private set; }
+    
+    public Sprite ghostSprite; 
+    public string ghostName;
+    public string ghostDescription;
+    public string trait;
+    
     public GhostBehavior initialBehavior;
     public GhostBehaviorType initialBehaviorType;
     public Transform target;
