@@ -6,6 +6,7 @@ using GhostCardSpace;
 public class GhostBuilder : MonoBehaviour
 {
     [SerializeField] private PermanentUpgradeManager upgradedGhostData;
+    [SerializeField] private RunUpgradeManager runUpgradeManager;
     [Header("Ghost Spawning")]
     [Space(10)]
     [SerializeField] private Ghost ghostPrefab;
@@ -109,6 +110,7 @@ public class GhostBuilder : MonoBehaviour
         }
     }
 
+/*
     void SetGhostStats()
     {
         if (ghosts == null || ghosts.Length == 0)
@@ -152,6 +154,88 @@ public class GhostBuilder : MonoBehaviour
             ghosts[i].frightened.duration = upgradedGhostData.upgradedFrightenedDuration[i];
             ghosts[i].frightened.frightenedSpeedMultiplier = upgradedGhostData.upgradedFrightenedSpeedMultiplier[i];
         }
+    }
+    */
+    void SetGhostStats()
+    {
+        if (ghosts == null || ghosts.Length == 0)
+            return;
+
+        GhostCard[] ghostCardData = upgradedGhostData.GetGhostCardData();
+        int count = Mathf.Min(ghosts.Length, ghostCardData.Length);
+
+        for (int i = 0; i < count; i++)
+        {
+            // =========================
+            // BASE + PERMANENT
+            // =========================
+            int lives = upgradedGhostData.upgradedLives[i];
+            int points = upgradedGhostData.upgradedPoints[i];
+
+            float baseSpeed = upgradedGhostData.upgradedBaseSpeed[i];
+            float baseSpeedMultiplier = upgradedGhostData.upgradedBaseSpeedMultiplier[i];
+
+            int chaseDuration = upgradedGhostData.upgradedChaseDuration[i];
+            float chaseSpeedMultiplier = upgradedGhostData.upgradedChaseSpeedMultiplier[i];
+
+            int respawnDuration = upgradedGhostData.upgradedRespawnDuration[i];
+
+            int scatterDuration = upgradedGhostData.upgradedScatterDuration[i];
+            float scatterSpeedMultiplier = upgradedGhostData.upgradedScatterSpeedMultiplier[i];
+
+            int frightenedDuration = upgradedGhostData.upgradedFrightenedDuration[i];
+            float frightenedSpeedMultiplier = upgradedGhostData.upgradedFrightenedSpeedMultiplier[i];
+
+            // 👇 SI TES GHOSTS SUPPORTENT CES STATS
+            int packProximity = ghostCardData[i].packProximity;
+            int cornerProximity = ghostCardData[i].cornerProximity;
+
+            // =========================
+            // RUN UPGRADES
+            // =========================
+            if (runUpgradeManager != null)
+            {
+                chaseDuration += runUpgradeManager.totalChaseDuration;
+                chaseSpeedMultiplier += runUpgradeManager.totalChaseSpeedMultiplier;
+                packProximity += runUpgradeManager.totalPackProximity;
+
+                scatterDuration += runUpgradeManager.totalScatterDuration;
+                scatterSpeedMultiplier += runUpgradeManager.totalScatterSpeedMultiplier;
+                cornerProximity += runUpgradeManager.totalCornerProximity;
+            }
+
+            // =========================
+            // APPLY
+            // =========================
+            ghosts[i].lifeManager.Initialize(lives);
+            ghosts[i].points = points;
+
+            ghosts[i].movement.speed = baseSpeed;
+            ghosts[i].movement.speedMultiplier = baseSpeedMultiplier;
+
+            ghosts[i].chase.duration = chaseDuration;
+            ghosts[i].chase.chaseSpeedMultiplier = chaseSpeedMultiplier;
+
+            ghosts[i].home.duration = respawnDuration;
+
+            ghosts[i].scatter.duration = scatterDuration;
+            ghosts[i].scatter.scatterSpeedMultiplier = scatterSpeedMultiplier;
+
+            ghosts[i].frightened.duration = frightenedDuration;
+            ghosts[i].frightened.frightenedSpeedMultiplier = frightenedSpeedMultiplier;
+
+            // IMPORTANT : seulement si ces champs existent
+
+            //ghosts[i].chase.packProximity = packProximity;
+            //ghosts[i].scatter.cornerProximity = cornerProximity;
+
+            Debug.Log($"[GhostBuilder] Applied stats to {ghosts[i].ghostName}: lives={lives}, points={points}, baseSpeed={baseSpeed}, baseSpeedMultiplier={baseSpeedMultiplier}, chaseDuration={chaseDuration}, chaseSpeedMultiplier={chaseSpeedMultiplier}, respawnDuration={respawnDuration}, scatterDuration={scatterDuration}, scatterSpeedMultiplier={scatterSpeedMultiplier}, frightenedDuration={frightenedDuration}, frightenedSpeedMultiplier={frightenedSpeedMultiplier}, packProximity={packProximity}, cornerProximity={cornerProximity}");
+        }
+    }
+
+    public void ReapplyStats()
+    {
+        SetGhostStats();
     }
 }
 

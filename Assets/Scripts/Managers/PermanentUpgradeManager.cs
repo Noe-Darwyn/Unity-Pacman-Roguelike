@@ -122,25 +122,7 @@ public class PermanentUpgradeManager : MonoBehaviour
             totalFrightenedSpeedMultiplierBonus += upgrade.GetFrightenedSpeedMultiplierIncrease();
             totalFrightenedDurationBonus -= upgrade.GetFrightenedDurationDecrease();
         }
-        /*
-        for (int i = 0; i < availableUpgrades.Length; i++)
-        {
-            PermanentUpgradeCard upgrade = availableUpgrades[i];
-            
-            totalLivesBonus += upgrade.livesIncrease;
-            totalPointsBonus -= upgrade.pointsDecrease;
-            totalBaseSpeedBonus += upgrade.baseSpeedIncrease;
-            totalBaseSpeedMultiplierBonus += upgrade.baseSpeedMultiplierIncrease;
-            totalChaseDurationBonus += upgrade.chaseDurationIncrease;
-            totalChaseSpeedMultiplierBonus += upgrade.chaseSpeedMultiplierIncrease;
-            totalRespawnDurationBonus -= upgrade.respawnDurationDecrease;
-            totalScatterSpeedMultiplierBonus += upgrade.scatterSpeedMultiplierIncrease;
-            totalScatterDurationBonus += upgrade.scatterDurationIncrease;
-            totalFrightenedSpeedMultiplierBonus += upgrade.frightenedSpeedMultiplierIncrease;
-            totalFrightenedDurationBonus -= upgrade.frightenedDurationDecrease;
-        }
-        */
-
+        
         // Appliquer les bonus cumulés à chaque ghost
         for (int i = 0; i < ghostCardData.Length; i++)
         {

@@ -6,6 +6,8 @@ public class RunUpgradeController : MonoBehaviour
     [SerializeField] private RunInventory inventory;
     [SerializeField] private UpgradeChoiceUI ui;
     [SerializeField] private TimeManager timeManager;
+    [SerializeField] private RunUpgradeManager upgradeManager;
+    [SerializeField] private GhostBuilder ghostBuilder;
 
     /*
     void Update()
@@ -28,10 +30,13 @@ public class RunUpgradeController : MonoBehaviour
         {
             inventory.AddOrUpgrade(selected);
 
-            Debug.Log($"Player chose: {selected.temporaryUpgradeName}");
-            timeManager?.OnTimeResume();
+            upgradeManager.RecalculateStats();
 
-            // plus tard : recalcul gameplay ici
+            ghostBuilder.ReapplyStats();
+
+            Debug.Log($"Player chose: {selected.temporaryUpgradeName}");
+
+            timeManager?.OnTimeResume();
         });
     }
 }

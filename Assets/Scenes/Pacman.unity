@@ -1457,6 +1457,8 @@ MonoBehaviour:
   inventory: {fileID: 47017424}
   ui: {fileID: 1897622906}
   timeManager: {fileID: 474618201}
+  upgradeManager: {fileID: 975200316}
+  ghostBuilder: {fileID: 469897153}
 --- !u!1 &468613728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,6 +1578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostBuilder
   upgradedGhostData: {fileID: 469897154}
+  runUpgradeManager: {fileID: 975200316}
   ghostPrefab: {fileID: 3259707676119580883, guid: 2fde9760580df734b965459e729d1aba, type: 3}
   ghostParent: {fileID: 1200452626}
   ghostHomeInside: {fileID: 40866121}
@@ -4026,6 +4029,51 @@ MonoBehaviour:
   scorePacmanText: {fileID: 1945791160}
   scoreGhostText: {fileID: 1146465693}
   levelClearedText: {fileID: 0}
+--- !u!1 &975200314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975200315}
+  - component: {fileID: 975200316}
+  m_Layer: 0
+  m_Name: RunUpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &975200315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975200314}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1580437547}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975200316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975200314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa4be92675244a4fa034ea30198e281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunUpgradeManager
+  inventory: {fileID: 47017424}
 --- !u!1 &1013517261
 GameObject:
   m_ObjectHideFlags: 0
@@ -10542,6 +10590,7 @@ Transform:
   - {fileID: 47017423}
   - {fileID: 2101542074}
   - {fileID: 413175298}
+  - {fileID: 975200315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1651544308

@@ -16,9 +16,11 @@ MonoBehaviour:
   temporaryUpgradeSprite: {fileID: 21300000, guid: 76efc71326ce0624b86ebac20e4ad950, type: 3}
   temporaryUpgradeName: Scatter Speed -
   temporaryUpgradeDescription: "Description upgrade g\xE9n\xE9rique"
-  chaseDurationAlteration: 
-  chaseSpeedMultiplierAlteration: []
-  packProximityAlteration: 
-  scatterDurationAlteration: 
-  scatterSpeedMultiplierAlteration: []
-  cornerProximityAlteration: 
+  chaseDurationAlteration: 00000000
+  chaseSpeedMultiplierAlteration:
+  - 0
+  packProximityAlteration: 00000000
+  scatterDurationAlteration: 00000000
+  scatterSpeedMultiplierAlteration:
+  - 0
+  cornerProximityAlteration: 00000000

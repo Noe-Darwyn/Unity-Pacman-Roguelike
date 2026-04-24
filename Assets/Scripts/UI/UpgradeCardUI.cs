@@ -20,6 +20,12 @@ public class UpgradeCardUI : MonoBehaviour
             Debug.LogError("UpgradeCardUI received null card!");
             return;
         }
+        if (icon == null || title == null || description == null || button == null)
+        {
+            Debug.LogError($"UI not wired properly on {gameObject.name}");
+            return;
+        }
+        
         currentCard = card;
 
         icon.sprite = card?.temporaryUpgradeSprite;
